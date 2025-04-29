@@ -1,17 +1,19 @@
 <script lang="ts">
+  import GitHub from '$lib/components/svg/GitHub.svelte';
+  import LinkedIn from '$lib/components/svg/LinkedIn.svelte';
   import '../app.css';
   let { children } = $props();
 </script>
 
-<header class="flex justify-between bg-blue-400 px-2 py-3">
+<header class="flex items-center justify-between bg-blue-400 px-2 py-3">
   <div>Tony Montemuro</div>
   <div class="flex gap-3">
     <a href="/about">Projects</a>
     <a href="/blog">Blog</a>
   </div>
   <div class="flex gap-3">
-    <div>GitHub</div>
-    <div>LinkedIn</div>
+    <a href="https://github.com/tony-montemuro/"><GitHub class="h-8 w-8" /></a>
+    <a href="https://www.linkedin.com/in/tony-montemuro/"><LinkedIn class="h-8 w-8" /></a>
   </div>
 </header>
 
