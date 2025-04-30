@@ -6,9 +6,11 @@
 </script>
 
 <header class="flex items-center justify-between bg-blue-400 px-2 py-3">
-  <div>Tony Montemuro</div>
+  <div>
+    <a href="/">Tony Montemuro</a>
+  </div>
   <div class="flex gap-3">
-    <a href="/about">Projects</a>
+    <a href="/projects">Projects</a>
     <a href="/blog">Blog</a>
   </div>
   <div class="flex gap-3">
@@ -17,6 +19,6 @@
   </div>
 </header>
 
-<main class="p-2">
+<main class="font-text p-2 text-stone-100">
   {@render children()}
 </main>
