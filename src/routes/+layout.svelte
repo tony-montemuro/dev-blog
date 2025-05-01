@@ -1,6 +1,6 @@
 <script lang="ts">
-  import GitHub from '$lib/components/svg/GitHub.svelte';
-  import LinkedIn from '$lib/components/svg/LinkedIn.svelte';
+  import GitHub from '$lib/components/svg/github.svelte';
+  import LinkedIn from '$lib/components/svg/linkedin.svelte';
   import '../app.css';
   let { children } = $props();
 </script>

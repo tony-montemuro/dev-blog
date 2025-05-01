@@ -2,7 +2,7 @@
   import headshot from '$lib/assets/headshot.jpg';
 </script>
 
-<div class="flex items-center justify-center gap-24 pt-8">
+<div class="flex items-center p-8">
   <div class="flex flex-col gap-3">
     <h1 class="text-7xl">Tony Montemuro</h1>
     <div class="flex flex-col gap-2">
@@ -20,7 +20,9 @@
       </h2>
     </div>
   </div>
-  <div class="h-96 w-96">
-    <img src={headshot} alt="Tony Montemuro headshot" />
+  <div class="flex flex-grow justify-center">
+    <div class="flex h-96 w-96 items-center justify-center">
+      <img src={headshot} alt="Tony Montemuro headshot" />
+    </div>
   </div>
 </div>
