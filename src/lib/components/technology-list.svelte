@@ -1,18 +1,10 @@
 <script lang="ts">
   import Technologies from '$lib/components/technologies.svelte';
-  import { frontend } from '$lib/types/technology.svelte';
+  import { backend, frontend, tools } from '$lib/types/technology.svelte';
 </script>
 
-<div class="p-8">
+<div class="flex flex-col gap-2 p-8">
   <Technologies name="Frontend" technologies={frontend} />
-  <!-- <Technologies name="Backend"> -->
-  <!--   <span>Go</span> -->
-  <!--   <span>PHP</span> -->
-  <!--   <span>Python</span> -->
-  <!-- </Technologies> -->
-  <!-- <Technologies name="Tools"> -->
-  <!--   <span>Neovim</span> -->
-  <!--   <span>Tmux</span> -->
-  <!--   <span>Bash</span> -->
-  <!-- </Technologies> -->
+  <Technologies name="Backend" technologies={backend} />
+  <Technologies name="Tools" technologies={tools} />
 </div>
