@@ -21,7 +21,7 @@
     </div>
   </div>
   <div class="flex flex-grow justify-center">
-    <div class="flex h-96 w-96 items-center justify-center">
+    <div class="flex h-80 w-80 items-center justify-center">
       <img src={headshot} alt="Tony Montemuro headshot" />
     </div>
   </div>
