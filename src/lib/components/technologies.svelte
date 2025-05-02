@@ -13,10 +13,12 @@
   <h3 class="text-xl">{name}</h3>
   <div class="flex gap-2">
     {#each technologies as technology}
-      <div class="flex w-fit flex-row items-center gap-1.5 rounded-full border p-3">
-        <technology.icon />
-        <a href={technology.url} target="_blank">{technology.name}</a>
-      </div>
+      <a href={technology.url} target="_blank">
+        <div class="flex w-fit flex-row items-center gap-1.5 rounded-full border p-3">
+          <technology.icon />
+          <span>{technology.name}</span>
+        </div>
+      </a>
     {/each}
   </div>
 </div>
