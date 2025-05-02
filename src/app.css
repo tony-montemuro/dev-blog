@@ -4,4 +4,6 @@
 
 @theme {
   --font-text: "Hedvig Letters Serif", serif;
+  --gradient-solid: #b43a3a;
+  --bg-gradient: linear-gradient(90deg, rgba(180, 58, 58, 1) 2%, rgba(201, 253, 29, 1) 48%, rgba(69, 127, 252, 1) 87%);
 }

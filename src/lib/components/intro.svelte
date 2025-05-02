@@ -1,5 +1,5 @@
 <script lang="ts">
-  import headshot from '$lib/assets/headshot.jpg';
+  import headshot from '$lib/assets/headshot.png';
 </script>
 
 <div class="flex items-center p-8">
@@ -21,7 +21,9 @@
     </div>
   </div>
   <div class="flex flex-grow justify-center">
-    <div class="flex h-80 w-80 items-center justify-center">
+    <div
+      class="flex w-80 items-end justify-center rounded-2xl border-3 bg-conic/oklab from-green-100/70 via-green-700/80 to-green-100/70"
+    >
       <img src={headshot} alt="Tony Montemuro headshot" />
     </div>
   </div>
