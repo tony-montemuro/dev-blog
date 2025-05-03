@@ -5,7 +5,7 @@
   let { children } = $props();
 </script>
 
-<header class="flex items-center justify-between bg-green-400 px-2 py-3">
+<header class="h-nav flex items-center justify-between bg-green-400 px-2">
   <div>
     <a href="/">Tony Montemuro</a>
   </div>
