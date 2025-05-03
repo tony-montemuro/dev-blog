@@ -1,20 +1,36 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import type { Point } from '$lib/types/point.svelte';
+  import Structure from './structure.svelte';
   import Line from './line.svelte';
+  import Background from './background.svelte';
 
   const width = 30;
   const height = 17;
 
   let points = $state<any[]>([]);
+  let snake = $state<any[]>([]);
 
   onMount(() => {
     window.addEventListener('resize', updateGridPoints);
     updateGridPoints();
+
+    setTimeout(() => {
+      const p1: Point = {
+        x: points[15][15].x,
+        y: points[15][15].y
+      };
+      const p2: Point = {
+        x: points[15][16].x,
+        y: points[15][16].y
+      };
+      snake.push(p1);
+      snake.push(p2);
+      console.log('should be rendered lol');
+    }, 1000);
   });
 
   function updateGridPoints() {
-    console.log('?');
     const gridPointElements = document.querySelectorAll('.grid-point');
 
     // map of grid point coordinates to true HTML coordinates
@@ -26,9 +42,11 @@
     gridPointElements.forEach((element) => {
       const [_, x, y] = element.id.split('-').map((p) => parseInt(p));
       const rect = element.getBoundingClientRect();
+      const navHeight = window.getComputedStyle(document.body).getPropertyValue('--navbar-height');
+
       const point: Point = {
         x: rect.left,
-        y: rect.top
+        y: rect.top - Number.parseInt(navHeight)
       };
       gridPoints[y][x] = point;
     });
@@ -39,42 +57,24 @@
   $inspect(points);
 </script>
 
-<div class="top-nav fixed right-0 bottom-0 left-0 -z-10 min-h-screen">
-  <div class="flex min-h-screen flex-col justify-between">
-    {#each { length: height } as _, y}
-      <div class="flex justify-between">
-        {#each { length: width } as _, x}
-          <span class="grid-point" id="square-{x}-{y}"></span>
-        {/each}
-      </div>
+<Structure {width} {height} />
+<Background {points}>
+  <!-- Horizontal Lines -->
+  {#each { length: height } as _, y}
+    {#each { length: width - 1 } as _, x}
+      <Line p1={points[y][x]} p2={points[y][x + 1]} />
     {/each}
-  </div>
-</div>
+  {/each}
 
-{#if points.length}
-  <div class="fixed top-0 right-0 bottom-0 left-0 -z-10 min-h-screen">
-    <div class="flex min-h-screen flex-col justify-between">
-      {#each { length: height } as _, y}
-        <div class="flex justify-between">
-          {#each { length: width - 1 } as _, x}
-            <Line p1={points[y][x]} p2={points[y][x + 1]} />
-          {/each}
-        </div>
-      {/each}
-    </div>
-  </div>
-{/if}
+  <!-- Vertical Lines -->
+  {#each { length: height - 1 } as _, y}
+    {#each { length: width } as _, x}
+      <Line p1={points[y][x]} p2={points[y + 1][x]} />
+    {/each}
+  {/each}
 
-{#if points.length}
-  <div class="fixed top-0 right-0 bottom-0 left-0 -z-10 min-h-screen">
-    <div class="flex min-h-screen flex-col justify-between">
-      {#each { length: height - 1 } as _, y}
-        <div class="flex justify-between">
-          {#each { length: width } as _, x}
-            <Line p1={points[y][x]} p2={points[y + 1][x]} />
-          {/each}
-        </div>
-      {/each}
-    </div>
-  </div>
-{/if}
+  <!-- Snake -->
+  {#each { length: snake.length - 1 } as _, i}
+    <Line p1={snake[i]} p2={snake[i + 1]} stroke="white" isAnimated />
+  {/each}
+</Background>
