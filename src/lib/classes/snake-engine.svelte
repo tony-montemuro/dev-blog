@@ -2,6 +2,8 @@
   import type { Point } from '$lib/types/point.svelte';
   import type { Line } from '$lib/types/line.svelte';
 
+  type Quadrant = 1 | 2 | 3 | 4;
+
   export class SnakeEngine {
     private points: Point[][];
     private width: number;
@@ -9,15 +11,25 @@
     private direction: 'north' | 'east' | 'south' | 'west';
     private rate: number;
     private length: number;
+    private initialQuadrant: Quadrant;
+    private initialPadding: number;
     private id: number = 1;
     private snake = $state<Line[]>([]);
 
-    constructor(points: Point[][], rate: number, length: number = 20) {
+    constructor(
+      points: Point[][],
+      rate: number,
+      length: number = 20,
+      quadrent: Quadrant = 1,
+      padding: number = 2
+    ) {
       this.points = points;
       this.height = points.length;
       this.width = points[0].length;
       this.rate = rate;
       this.length = length;
+      this.initialQuadrant = quadrent;
+      this.initialPadding = padding;
       this.direction = this.getRandomDirection();
 
       setInterval(() => {
@@ -116,10 +128,30 @@
     }
 
     private getInitialPoint(): Point {
-      const padding = 2;
+      let lowerX: number = 0,
+        lowerY: number = 0,
+        higherX: number = 0,
+        higherY: number = 0;
+
+      if (this.initialQuadrant === 1 || this.initialQuadrant === 2) {
+        higherY = this.height / 2;
+      }
+
+      if (this.initialQuadrant === 3 || this.initialQuadrant === 4) {
+        lowerY = this.height / 2;
+      }
+
+      if (this.initialQuadrant === 2 || this.initialQuadrant === 3) {
+        higherX = this.width / 2;
+      }
+
+      if (this.initialQuadrant === 1 || this.initialQuadrant === 4) {
+        lowerX = this.width / 2;
+      }
+
       return {
-        x: this.getRandomNumberInRange(padding, this.width - padding),
-        y: this.getRandomNumberInRange(padding, this.height - padding)
+        x: this.getRandomNumberInRange(this.initialPadding, this.width - this.initialPadding),
+        y: this.getRandomNumberInRange(this.initialPadding, this.height - this.initialPadding)
       };
     }
 

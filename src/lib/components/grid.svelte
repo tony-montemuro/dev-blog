@@ -8,7 +8,7 @@
 
   const width = 30;
   const height = 17;
-  const SNAKE_LENGTH = 50;
+  const SNAKE_LENGTH = 30;
   const EXTEND_TIME = 500;
 
   let gridPoints = $state<any[]>([]);
@@ -37,9 +37,18 @@
 
     return gridLines;
   });
-  let snakeEngine = $derived.by<SnakeEngine | null>((): SnakeEngine | null =>
-    gridLines.length > 0 ? new SnakeEngine(gridPoints, EXTEND_TIME, SNAKE_LENGTH) : null
-  );
+  let snakeEngines = $derived.by<SnakeEngine[] | null>((): SnakeEngine[] | null => {
+    if (gridLines.length > 0) {
+      return [
+        new SnakeEngine(gridPoints, EXTEND_TIME, SNAKE_LENGTH, 1),
+        new SnakeEngine(gridPoints, EXTEND_TIME, SNAKE_LENGTH, 2),
+        new SnakeEngine(gridPoints, EXTEND_TIME, SNAKE_LENGTH, 3),
+        new SnakeEngine(gridPoints, EXTEND_TIME, SNAKE_LENGTH, 4)
+      ];
+    }
+
+    return null;
+  });
 
   onMount(() => {
     window.addEventListener('resize', updateGridPoints);
@@ -72,7 +81,6 @@
 
   $inspect(gridPoints);
   $inspect(gridLines);
-  $inspect(snakeEngine?.getSnake());
 </script>
 
 <Structure {width} {height} />
@@ -82,11 +90,16 @@
       <Line {line} />
     {/key}
   {/each}
-  {#each snakeEngine?.getSnake() ?? [] as line (line.id)}
-    <Line
-      stroke="white"
-      {line}
-      timers={{ fadeInTimer: EXTEND_TIME, fadeOutTimer: EXTEND_TIME * SNAKE_LENGTH - EXTEND_TIME }}
-    />
+  {#each snakeEngines ?? [] as snakeEngine}
+    {#each snakeEngine?.getSnake() ?? [] as line (line.id)}
+      <Line
+        stroke="white"
+        {line}
+        timers={{
+          fadeInTimer: EXTEND_TIME,
+          fadeOutTimer: EXTEND_TIME * SNAKE_LENGTH - EXTEND_TIME
+        }}
+      />
+    {/each}
   {/each}
 </Background>
