@@ -1,14 +1,14 @@
 <script lang="ts">
-  import Point from '$lib/types/point.svelte';
+  import type { Line } from '$lib/types/line.svelte';
 
   interface Props {
-    p1: Point;
-    p2: Point;
+    line: Line;
     stroke?: string;
     isAnimated?: boolean;
   }
 
-  let { p1, p2, stroke = 'grey', isAnimated = false }: Props = $props();
+  let { line, stroke = 'grey', isAnimated = false }: Props = $props();
+  let { p1, p2 }: Line = line;
   let lineLength = $derived(Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p2.x, 2)));
 </script>
 
