@@ -3,20 +3,21 @@
   import type { Line } from '$lib/types/line.svelte';
 
   export class SnakeEngine {
-    static readonly SNAKE_LENGTH = 20;
+    private points: Point[][];
     private width: number;
     private height: number;
-    private direction!: 'north' | 'east' | 'south' | 'west';
+    private direction: 'north' | 'east' | 'south' | 'west';
     private rate: number;
-    private points: Point[][];
-    private snake = $state<Line[]>([]);
+    private length: number;
     private id: number = 1;
+    private snake = $state<Line[]>([]);
 
-    constructor(points: Point[][], rate: number) {
+    constructor(points: Point[][], rate: number, length: number = 20) {
       this.points = points;
       this.height = points.length;
       this.width = points[0].length;
       this.rate = rate;
+      this.length = length;
       this.direction = this.getRandomDirection();
 
       setInterval(() => {
@@ -103,7 +104,7 @@
     }
 
     private addLine(line: Line): void {
-      if (this.snake.length === SnakeEngine.SNAKE_LENGTH) {
+      if (this.snake.length === this.length) {
         this.snake = [...this.snake.slice(1), line];
       } else {
         this.snake.push(line);

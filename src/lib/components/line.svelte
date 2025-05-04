@@ -1,16 +1,16 @@
 <script lang="ts">
-  import type { Line } from '$lib/types/line.svelte';
+  import type { Line, Timers } from '$lib/types/line.svelte';
 
   interface Props {
     line: Line;
     stroke?: string;
-    fadeInTime?: number;
-    fadeOutTime?: number;
+    timers?: Timers;
   }
 
-  let { line, stroke = 'grey', fadeInTime = 0, fadeOutTime = 0 }: Props = $props();
+  let { line, stroke = 'grey', timers = { fadeInTimer: 0, fadeOutTimer: 0 } }: Props = $props();
   let { p1, p2 }: Line = line;
   let lineLength = $derived(Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p2.x, 2)));
+  let { fadeInTimer, fadeOutTimer }: Timers = timers;
 </script>
 
 <line
@@ -22,8 +22,8 @@
   stroke-opacity="0.3"
   stroke-width="2"
   stroke-dasharray={lineLength}
-  class:animated={fadeInTime > 0}
-  style="--line-length: {lineLength}px; --fadeInTime: {fadeInTime}ms; --fadeOutTime: {fadeOutTime}ms"
+  class:animated={fadeInTimer > 0}
+  style="--line-length: {lineLength}px; --fadeInTime: {fadeInTimer}ms; --fadeOutTime: {fadeOutTimer}ms"
 />
 
 <style>

@@ -6,4 +6,9 @@
     p2: Point;
     id: number | undefined;
   }
+
+  export interface Timers {
+    fadeInTimer: number;
+    fadeOutTimer: number;
+  }
 </script>
