@@ -4,5 +4,6 @@
   export interface Line {
     p1: Point;
     p2: Point;
+    id: number | undefined;
   }
 </script>

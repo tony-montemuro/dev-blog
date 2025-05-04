@@ -80,7 +80,7 @@
       <Line {line} />
     {/key}
   {/each}
-  {#each snakeEngine?.getSnake() ?? [] as line}
-    <Line stroke="white" {line} isAnimated />
+  {#each snakeEngine?.getSnake() ?? [] as line (line.id)}
+    <Line stroke="white" {line} fadeInTime={1000} fadeOutTime={20000} />
   {/each}
 </Background>

@@ -8,39 +8,18 @@
     private height: number;
     private direction!: 'north' | 'east' | 'south' | 'west';
     private rate: number;
-    private interval!: number;
     private points: Point[][];
     private snake = $state<Line[]>([]);
+    private id: number = 1;
 
     constructor(points: Point[][], rate: number) {
       this.points = points;
       this.height = points.length;
       this.width = points[0].length;
       this.rate = rate;
-      this.reset();
-    }
+      this.direction = this.getRandomDirection();
 
-    public reset() {
-      if (this.interval) {
-        clearInterval(this.interval);
-      }
-      this.snake = [];
-      switch (this.getRandomNumberInRange(0, 3)) {
-        case 0:
-          this.direction = 'north';
-          break;
-        case 1:
-          this.direction = 'east';
-          break;
-        case 2:
-          this.direction = 'south';
-          break;
-        default:
-          this.direction = 'west';
-          break;
-      }
-
-      this.interval = setInterval(() => {
+      setInterval(() => {
         this.extend();
       }, this.rate);
     }
@@ -54,8 +33,21 @@
 
       return {
         p1: this.points[p1.y][p1.x],
-        p2: this.points[p2.y][p2.x]
+        p2: this.points[p2.y][p2.x],
+        id: line.id
       };
+    }
+
+    private getRandomDirection() {
+      switch (this.getRandomNumberInRange(0, 3)) {
+        case 0:
+          return 'north';
+        case 1:
+          return 'east';
+        case 2:
+          return 'south';
+      }
+      return 'west';
     }
 
     private randomRotate(): void | undefined {
@@ -76,40 +68,46 @@
       this.randomRotate();
       prevPoint = this.getLastPoint();
       nextPoint = this.getNextPoint(prevPoint);
-      line = { p1: prevPoint, p2: nextPoint };
+      line = { p1: prevPoint, p2: nextPoint, id: this.id };
 
       if (nextPoint.x < 0) {
         nextPoint.x = this.width - 1;
         this.direction = 'west';
-        line = { p1: nextPoint, p2: this.getNextPoint(nextPoint) };
+        line.p1 = nextPoint;
+        line.p2 = this.getNextPoint(nextPoint);
       }
 
       if (nextPoint.x >= this.width) {
         nextPoint.x = 0;
         this.direction = 'east';
-        line = { p1: nextPoint, p2: this.getNextPoint(nextPoint) };
+        line.p1 = nextPoint;
+        line.p2 = this.getNextPoint(nextPoint);
       }
 
       if (nextPoint.y < 0) {
         nextPoint.y = this.height - 1;
         this.direction = 'north';
-        line = { p1: nextPoint, p2: this.getNextPoint(nextPoint) };
+        line.p1 = nextPoint;
+        line.p2 = this.getNextPoint(nextPoint);
       }
 
       if (nextPoint.y >= this.height) {
         nextPoint.y = 0;
         this.direction = 'south';
-        line = { p1: nextPoint, p2: this.getNextPoint(nextPoint) };
+        line.p1 = nextPoint;
+        line.p2 = this.getNextPoint(nextPoint);
       }
 
       this.addLine(line);
+      this.id++;
     }
 
     private addLine(line: Line): void {
       if (this.snake.length === SnakeEngine.SNAKE_LENGTH) {
-        this.snake.shift();
+        this.snake = [...this.snake.slice(1), line];
+      } else {
+        this.snake.push(line);
       }
-      this.snake.push(line);
     }
 
     private getRandomNumberInRange(lower: number, higher: number): number {
