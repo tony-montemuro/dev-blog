@@ -4,6 +4,7 @@
 </script>
 
 <div class="flex flex-col gap-2 p-8">
+  <h2 class="text-4xl">Technical Skills</h2>
   <Technologies name="Frontend" technologies={frontend} />
   <Technologies name="Backend" technologies={backend} />
   <Technologies name="Tools" technologies={tools} />

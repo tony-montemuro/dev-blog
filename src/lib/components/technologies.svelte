@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Technology } from '$lib/types/technology.svelte';
+  import LinkButton from './link-button.svelte';
 
   interface Props {
     name: string;
@@ -13,16 +14,10 @@
   <h3 class="text-xl">{name}</h3>
   <div class="flex gap-2">
     {#each technologies as technology}
-      <a
-        href={technology.url}
-        target="_blank"
-        class="rounded-full border border-transparent bg-gray-400/30 transition-colors duration-300 ease-in-out hover:border-green-400 hover:bg-gray-400/60"
-      >
-        <div class="flex w-fit flex-row items-center gap-1.5 rounded-full p-3">
-          <technology.icon />
-          <span>{technology.name}</span>
-        </div>
-      </a>
+      <LinkButton href={technology.url} isNewTab>
+        <technology.icon />
+        <span>{technology.name}</span>
+      </LinkButton>
     {/each}
   </div>
 </div>

@@ -4,7 +4,6 @@
   width="30"
   height="30"
 >
-  <title>React Logo</title>
   <circle cx="0" cy="0" r="2.05" fill="#61dafb" />
   <g stroke="#61dafb" stroke-width="1" fill="none">
     <ellipse rx="11" ry="4.2" />

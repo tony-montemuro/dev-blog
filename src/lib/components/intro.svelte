@@ -1,5 +1,6 @@
 <script lang="ts">
   import headshot from '$lib/assets/headshot.png';
+  import LinkButton from './link-button.svelte';
 </script>
 
 <div class="flex items-center p-8">
@@ -18,6 +19,20 @@
         🗨️ A proponent of <span class="text-green-400">clear communication</span> as a foundation for
         building for precise, reliable systems.
       </h2>
+    </div>
+    <div class="flex gap-2">
+      <LinkButton href="/projects">
+        <span>🚧</span>
+        <span>My Projects</span>
+      </LinkButton>
+      <LinkButton href="/blog">
+        <span>✍️</span>
+        <span>My Blog</span>
+      </LinkButton>
+      <LinkButton href="/contact">
+        <span>✉️</span>
+        <span>Contact Me!</span>
+      </LinkButton>
     </div>
   </div>
   <div class="flex flex-grow justify-center">

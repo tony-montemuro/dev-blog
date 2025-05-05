@@ -7,7 +7,6 @@
   xml:space="preserve"
   xmlns="http://www.w3.org/2000/svg"
 >
-  <title id="title3510">Official PHP Logo</title>
   <defs id="defs3434">
     <clipPath clipPathUnits="userSpaceOnUse" id="clipPath3444">
       <path
@@ -111,4 +110,3 @@
     </g>
   </g>
 </svg>
-

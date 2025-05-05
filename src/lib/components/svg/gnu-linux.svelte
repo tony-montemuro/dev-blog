@@ -6,7 +6,6 @@
   width="27"
   height="32"
 >
-  <title>Tux</title>
   <defs id="tux_fx">
     <linearGradient id="gradient_belly_shadow">
       <stop offset="0" stop-color="#000000" />
