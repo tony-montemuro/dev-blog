@@ -4,6 +4,28 @@
 
 @theme {
   --font-text: "Hedvig Letters Serif", serif;
+  --animate-floatin: floatin 0.5s;
+  --animate-fadein: fadein 0.5s;
+
+  @keyframes floatin {
+    0% {
+      opacity: 0; 
+      transform: translateY(3%);
+    },
+    100% {
+      opacity: 1; 
+      transform: translateY(0%);
+    }
+  }
+
+  @keyframes fadein {
+    0% {
+      opacity: 0;
+    },
+    100% {
+      opacity: 1;
+    }
+  }
 }
 
 @layer base {
@@ -26,16 +48,3 @@
   }
 }
 
-
-/* @keyframes dash { */
-/*   from { */
-/*     stroke-dashoffset: lineLength; */
-/*   } */
-/*   to { */
-/*     stroke-dashoffset: 0; */
-/*   } */
-/**/
-/*   animate-dash { */
-/*     animation: dash 1s ease-in-out forwards; */
-/*   } */
-/* } */

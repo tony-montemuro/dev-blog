@@ -11,7 +11,7 @@
 </script>
 
 {#if points.length}
-  <div class="top-nav h-app fixed right-0 bottom-0 left-0 -z-10">
+  <div class="top-nav h-app animate-fadein fixed right-0 bottom-0 left-0 -z-10">
     <svg class="pointer-events-none absolute inset-0 h-full w-full">
       {@render children()}
     </svg>
