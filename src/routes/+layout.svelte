@@ -5,7 +5,7 @@
   let { children } = $props();
 </script>
 
-<header class="h-nav flex items-center justify-between bg-green-400 px-2">
+<header class="h-nav sticky top-0 z-50 flex items-center justify-between bg-green-400 px-2">
   <div>
     <a href="/">Tony Montemuro</a>
   </div>

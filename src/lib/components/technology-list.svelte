@@ -4,7 +4,7 @@
 </script>
 
 <div class="flex flex-col gap-2 p-8">
-  <h2 class="text-4xl">Technical Skills</h2>
+  <h2 class="text-3xl md:text-4xl">Technical Skills</h2>
   <div class="animate-floatin flex flex-col gap-2">
     <Technologies name="Frontend" technologies={frontend} />
     <Technologies name="Backend" technologies={backend} />

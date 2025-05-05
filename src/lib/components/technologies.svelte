@@ -12,11 +12,11 @@
 
 <div class="flex flex-col gap-1">
   <h3 class="text-xl">{name}</h3>
-  <div class="flex gap-2">
+  <div class="flex flex-wrap gap-2">
     {#each technologies as technology}
       <LinkButton href={technology.url} isNewTab>
         <technology.icon />
-        <span>{technology.name}</span>
+        <span class="text-sm md:text-base">{technology.name}</span>
       </LinkButton>
     {/each}
   </div>
