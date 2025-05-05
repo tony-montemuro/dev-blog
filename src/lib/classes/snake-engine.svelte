@@ -21,7 +21,7 @@
       rate: number,
       length: number = 20,
       quadrent: Quadrant = 1,
-      padding: number = 2
+      padding: number = 3
     ) {
       this.points = points;
       this.height = points.length;
@@ -63,13 +63,16 @@
       return 'west';
     }
 
+    // 25% chance of moving left
+    // 25% chance of moving right
+    // 50% chance of moving straight
     private randomRotate(): void | undefined {
-      switch (this.getRandomNumberInRange(0, 2)) {
+      switch (this.getRandomNumberInRange(0, 3)) {
         case 0:
           return this.rotateLeft();
         case 1:
           return this.rotateRight();
-        case 2:
+        default:
         // do nothing -- continue straight
       }
     }
@@ -130,8 +133,8 @@
     private getInitialPoint(): Point {
       let lowerX: number = 0,
         lowerY: number = 0,
-        higherX: number = 0,
-        higherY: number = 0;
+        higherX: number = this.width,
+        higherY: number = this.height;
 
       if (this.initialQuadrant === 1 || this.initialQuadrant === 2) {
         higherY = this.height / 2;
@@ -150,8 +153,8 @@
       }
 
       return {
-        x: this.getRandomNumberInRange(this.initialPadding, this.width - this.initialPadding),
-        y: this.getRandomNumberInRange(this.initialPadding, this.height - this.initialPadding)
+        x: this.getRandomNumberInRange(lowerX + this.initialPadding, higherX - this.initialPadding),
+        y: this.getRandomNumberInRange(lowerY + this.initialPadding, higherY - this.initialPadding)
       };
     }
 

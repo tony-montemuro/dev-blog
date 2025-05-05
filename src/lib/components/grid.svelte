@@ -9,7 +9,7 @@
   const width = 30;
   const height = 17;
   const SNAKE_LENGTH = 30;
-  const EXTEND_TIME = 500;
+  const EXTEND_TIME = 350;
 
   let gridPoints = $state<any[]>([]);
   let gridLines = $derived.by<any[]>((): any[] => {
@@ -91,14 +91,15 @@
     {/key}
   {/each}
   {#each snakeEngines ?? [] as snakeEngine}
-    {#each snakeEngine?.getSnake() ?? [] as line (line.id)}
+    {#each snakeEngine.getSnake() ?? [] as line (line.id)}
       <Line
-        stroke="white"
+        stroke="green"
         {line}
         timers={{
           fadeInTimer: EXTEND_TIME,
           fadeOutTimer: EXTEND_TIME * SNAKE_LENGTH - EXTEND_TIME
         }}
+        opacity={0.7}
       />
     {/each}
   {/each}

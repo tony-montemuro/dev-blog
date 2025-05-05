@@ -5,11 +5,17 @@
     line: Line;
     stroke?: string;
     timers?: Timers;
+    opacity?: number;
   }
 
-  let { line, stroke = 'grey', timers = { fadeInTimer: 0, fadeOutTimer: 0 } }: Props = $props();
+  let {
+    line,
+    stroke = 'grey',
+    timers = { fadeInTimer: 0, fadeOutTimer: 0 },
+    opacity = 0.3
+  }: Props = $props();
   let { p1, p2 }: Line = line;
-  let lineLength = $derived(Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p2.x, 2)));
+  let lineLength = $derived(Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2)));
   let { fadeInTimer, fadeOutTimer }: Timers = timers;
 </script>
 
@@ -19,7 +25,7 @@
   x2={p2.x}
   y2={p2.y}
   {stroke}
-  stroke-opacity="0.3"
+  stroke-opacity={opacity}
   stroke-width="2"
   stroke-dasharray={lineLength}
   class:animated={fadeInTimer > 0}
