@@ -4,9 +4,9 @@
 </script>
 
 <div class="flex items-center gap-8 p-8">
-  <div class="flex flex-col gap-3">
+  <div class="animate-floatin flex flex-col gap-3">
     <h1 class="text-5xl md:text-7xl">Tony Montemuro</h1>
-    <div class="animate-floatin flex flex-col gap-2">
+    <div class="flex flex-col gap-2">
       <h2 class="text-xl md:text-2xl">
         👋 Hello! I am a <span class="text-green-400">Full Stack Web Developer,</span> passionate about
         creating intuitive, performant software.

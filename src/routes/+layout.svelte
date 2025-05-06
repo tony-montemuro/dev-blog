@@ -19,6 +19,6 @@
   </div>
 </header>
 
-<main class="font-text p-2 text-stone-100">
+<main class="font-text text-stone-100">
   {@render children()}
 </main>

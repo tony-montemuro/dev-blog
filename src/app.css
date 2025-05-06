@@ -6,6 +6,7 @@
   --font-text: "Hedvig Letters Serif", serif;
   --animate-floatin: floatin 0.5s;
   --animate-fadein: fadein 0.5s;
+  --color-smb-elite-bg: rgb(58, 19, 68);
 
   @keyframes floatin {
     0% {
