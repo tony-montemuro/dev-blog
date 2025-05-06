@@ -11,7 +11,7 @@
   </div>
   <div class="animate-floatin flex justify-between pt-40">
     <ScrollButton sectionId="smb-elite" bg="bg-smb-elite-bg">
-      <SmbElite />
+      <SmbElite width={220} />
     </ScrollButton>
     <ScrollButton sectionId="image2ascii" bg="bg-white">
       <img src={Image2Ascii} alt="image2ascii Logo" class="w-[220px]" />
