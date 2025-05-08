@@ -1,6 +1,8 @@
 <script lang="ts">
+  import ProjectCarousel from './project-carousel.svelte';
   import Github from './svg/github.svelte';
   import SmbElite from './svg/smb-elite.svelte';
+  import { smbEliteImages } from '$lib/types/image.svelte';
 </script>
 
 <div
@@ -14,7 +16,7 @@
       </a>
     </div>
 
-    <div class="flex basis-3/5 flex-col gap-8 text-2xl">
+    <div class="flex flex-col gap-8 text-2xl">
       <span>
         A leaderboard website for games in SEGA's <a
           href="https://en.wikipedia.org/wiki/Super_Monkey_Ball"
@@ -31,7 +33,7 @@
       <span>User profile customization.</span>
     </div>
   </div>
-  <div class="basis-1/2">
+  <div class="basis-3/5">
     <a
       href="https://github.com/tony-montemuro/smb-website"
       target="_blank"
@@ -39,5 +41,6 @@
     >
       <Github class="h-16 w-16 opacity-50 transition-opacity duration-200 hover:opacity-100" />
     </a>
+    <ProjectCarousel images={smbEliteImages} />
   </div>
 </div>
