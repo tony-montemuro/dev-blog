@@ -10,6 +10,10 @@
   let { images }: Props = $props();
   let active = $state<number>(0);
 
+  const modulo = (n: number, m: number): number => {
+    return ((n % m) + m) % m;
+  };
+
   const slide = (e: MouseEvent & { currentTarget: HTMLButtonElement }) => {
     const target = e.currentTarget;
     const isLeft = target.classList.contains('left');
@@ -19,46 +23,43 @@
       return;
     }
 
-    const nextSlideIndex = Math.abs(active + (isLeft ? -1 : 1)) % images.length;
+    active = Math.abs(modulo(active + (isLeft ? -1 : 1), images.length));
     const slideWidth = slides?.querySelector('.slide')?.clientWidth;
+    console.log(active, slideWidth, active * (slideWidth ?? 1));
     slides.scrollTo({
       top: 0,
-      left: nextSlideIndex * (slideWidth ?? 1),
+      left: active * (slideWidth ?? 1),
       behavior: 'smooth'
     });
-    active = nextSlideIndex;
   };
 </script>
 
-<!-- <div class="flex h-full items-center"> -->
 <div class="relative h-full overflow-hidden">
   <button
     type="button"
-    class="left absolute top-0 bottom-0 left-0 z-10 m-auto h-80 cursor-pointer rounded-full bg-gray-400/20 p-2 transition-colors duration-200 hover:bg-gray-400/40"
+    class="left absolute top-0 bottom-0 left-5 z-10 m-auto h-80 cursor-pointer rounded-full bg-black/60 p-2 transition-colors duration-200 hover:bg-black/80"
     onclick={slide}
   >
     <ArrowLeft />
   </button>
 
   <ul
-    class="slides absolute top-0 left-2 m-0 flex h-full w-full list-none items-center overflow-scroll scroll-smooth p-0"
+    class="slides absolute top-0 m-0 flex h-full w-full list-none items-center overflow-x-scroll scroll-smooth p-0"
     tabindex="-1"
   >
     {#each images as image}
-      <li class="slide w-full flex-shrink-0 flex-grow-1 basis-full">
-        <img
-          src={image.src}
-          alt={image.alt}
-          class="h-auto max-h-full w-auto max-w-full object-cover"
-        />
-        <em>{image.caption}</em>
+      <li
+        class="slide flex h-full w-full flex-shrink-0 flex-col items-center justify-center gap-1 overflow-hidden"
+      >
+        <img src={image.src} alt={image.alt} class="max-h-full w-auto max-w-[85%] object-contain" />
+        <em class="text-sm">{image.caption}</em>
       </li>
     {/each}
   </ul>
 
   <button
     type="button"
-    class="right absolute top-0 right-0 bottom-0 z-10 m-auto h-80 cursor-pointer rounded-full bg-gray-400/20 p-2 transition-colors duration-200 hover:bg-gray-400/40"
+    class="right absolute top-0 right-5 bottom-0 z-10 m-auto h-80 cursor-pointer rounded-full bg-black/60 p-2 transition-colors duration-200 hover:bg-black/80"
     onclick={slide}
   >
     <ArrowRight />

@@ -7,12 +7,17 @@
 
 <div
   id="smb-elite"
-  class="h-app from-smb-elite-bg/50 to to-smb-elite-fg/50 relative flex snap-start snap-always bg-radial-[at_20%_15%] p-8"
+  class="h-app from-smb-elite-bg/50 to to-smb-elite-fg/50 relative flex snap-start snap-always bg-radial-[at_20%_15%]"
 >
-  <div class="flex basis-2/5 flex-col gap-8">
-    <div class="w-fit">
-      <a href="https://smbelite.net/" target="_blank" class="w-fit">
-        <SmbElite width={400} />
+  <div class="flex basis-2/5 flex-col gap-8 p-8">
+    <div class="flex items-center gap-8">
+      <div class="w-fit">
+        <a href="https://smbelite.net/" target="_blank" class="w-fit">
+          <SmbElite width={300} />
+        </a>
+      </div>
+      <a href="https://github.com/tony-montemuro/smb-website" target="_blank">
+        <Github class="h-16 w-16 opacity-50 transition-opacity duration-200 hover:opacity-100" />
       </a>
     </div>
 
@@ -33,14 +38,7 @@
       <span>User profile customization.</span>
     </div>
   </div>
-  <div class="basis-3/5">
-    <a
-      href="https://github.com/tony-montemuro/smb-website"
-      target="_blank"
-      class="absolute top-8 right-8"
-    >
-      <Github class="h-16 w-16 opacity-50 transition-opacity duration-200 hover:opacity-100" />
-    </a>
+  <div class="h-app basis-3/5 p-8">
     <ProjectCarousel images={smbEliteImages} />
   </div>
 </div>
