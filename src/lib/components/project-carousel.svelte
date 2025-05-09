@@ -41,14 +41,13 @@
 
     function keybinds(e: KeyboardEvent) {
       const key: string = e.key;
-      const leftKeys: Array<string> = ['ArrowLeft', 'a'];
-      const rightKeys: Array<string> = ['ArrowRight', 'd'];
-
-      if (leftKeys.includes(key)) {
+      if (key === 'ArrowLeft') {
+        e.preventDefault();
         leftBtn.click();
       }
 
-      if (rightKeys.includes(key)) {
+      if (key === 'ArrowRight') {
+        e.preventDefault();
         rightBtn.click();
       }
     }
