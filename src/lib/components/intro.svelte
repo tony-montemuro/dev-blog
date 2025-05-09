@@ -3,7 +3,7 @@
   import LinkButton from './link-button.svelte';
 </script>
 
-<div class="flex items-center gap-8 p-8">
+<div class="flex items-center gap-8 p-(--app-padding)">
   <div class="animate-floatin flex flex-col gap-3">
     <h1 class="text-5xl md:text-7xl">Tony Montemuro</h1>
     <div class="flex flex-col gap-2">

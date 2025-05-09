@@ -9,8 +9,8 @@
   id="smb-elite"
   class="h-app from-smb-elite-bg/50 to to-smb-elite-fg/50 relative flex snap-start snap-always bg-radial-[at_20%_15%]"
 >
-  <div class="flex basis-2/5 flex-col gap-8 p-8">
-    <div class="flex items-center gap-8">
+  <div class="flex basis-2/5 flex-col gap-8 p-(--app-padding)">
+    <div class="flex items-center justify-between">
       <div class="w-fit">
         <a href="https://smbelite.net/" target="_blank" class="w-fit">
           <SmbElite width={300} />
@@ -33,16 +33,25 @@
           >Super Monkey Ball series
         </a>.
       </span>
-      <span>Over 20 games featured (and counting)!</span>
-      <span>Ranking over 19,000 user submissions (and counting)!</span>
-      <span>Over 250 users (and counting)!</span>
       <span>
-        Tiered-permission system: normal users, game-specific moderators, and site adminstrators.
+        Featuring over <strong class="text-(--color-smb-elite-fg)">20</strong> games.
       </span>
-      <span>Receives approximately 400 visits per day.</span>
+      <span>
+        Ranking over <strong class="text-(--color-smb-elite-fg)">19,000</strong> user submissions.
+      </span>
+      <span>
+        Over <strong class="text-(--color-smb-elite-fg)">250</strong> users.
+      </span>
+      <span>
+        <strong class="text-(--color-smb-elite-fg)">3-tiered</strong> permission system: normal users,
+        game-specific moderators, and site adminstrators.
+      </span>
+      <span>
+        Receives approximately <strong class="text-(--color-smb-elite-fg)">400</strong> visits per day.
+      </span>
     </div>
   </div>
-  <div class="h-app basis-3/5 p-8">
+  <div class="h-app basis-3/5 p-(--app-padding)">
     <ProjectCarousel images={smbEliteImages} />
   </div>
 </div>
