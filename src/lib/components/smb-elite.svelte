@@ -30,12 +30,13 @@
           >Super Monkey Ball series
         </a>.
       </span>
-      <span>Over 250 users.</span>
+      <span>Over 20 games featured (and counting)!</span>
       <span>Ranking over 19,000 user submissions (and counting)!</span>
+      <span>Over 250 users (and counting)!</span>
       <span>
         Tiered-permission system: normal users, game-specific moderators, and site adminstrators.
       </span>
-      <span>User profile customization.</span>
+      <span>Receives approximately 400 visits per day.</span>
     </div>
   </div>
   <div class="h-app basis-3/5 p-8">
