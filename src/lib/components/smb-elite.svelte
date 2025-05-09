@@ -17,7 +17,10 @@
         </a>
       </div>
       <a href="https://github.com/tony-montemuro/smb-website" target="_blank">
-        <Github class="h-16 w-16 opacity-50 transition-opacity duration-200 hover:opacity-100" />
+        <Github
+          class="h-16 w-16 opacity-50 transition-opacity duration-200 hover:opacity-100"
+          fillColor="var(--color-smb-elite-fg)"
+        />
       </a>
     </div>
 
