@@ -1,9 +1,7 @@
 <script lang="ts">
-  interface Props {
-    width: number;
-  }
+  import type { Width } from '$lib/types/width.svelte';
 
-  let { width }: Props = $props();
+  let { width }: Width = $props();
 </script>
 
 <svg

@@ -1,8 +1,11 @@
 <script lang="ts" context="module">
   import Admin from '$lib/assets/smbelite-admin.png';
+  import Dark from '$lib/assets/image2ascii-dark.png';
   import Games from '$lib/assets/smbelite-games.png';
   import Levelboard from '$lib/assets/smbelite-levelboard.png';
+  import Mobile from '$lib/assets/image2ascii-mobile.png';
   import Totalizer from '$lib/assets/smbelite-totalizer.png';
+  import Twitch from '$lib/assets/image2ascii-twitch.png';
   import Users from '$lib/assets/smbelite-users.png';
 
   export interface Image {
@@ -36,6 +39,19 @@
       src: Admin,
       alt: 'SMBElite admin panel',
       caption: 'Site administrator tool for adding new games'
+    }
+  ];
+
+  export const image2AsciiImages: Image[] = [
+    {
+      src: Twitch,
+      alt: 'image2ascii Twitch example',
+      caption: 'Creating Twitch ASCII art'
+    },
+    {
+      src: Dark,
+      alt: 'image2ascii dark mode',
+      caption: 'Dark mode'
     }
   ];
 </script>

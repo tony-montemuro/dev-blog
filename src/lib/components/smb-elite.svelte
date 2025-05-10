@@ -6,7 +6,11 @@
 
 <Project
   id="smb-elite"
-  color={{ bgPrimary: 'smb-elite-bg', bgSecondary: 'smb-elite-fg', github: 'smb-elite-fg' }}
+  color={{
+    bgPrimary: 'from-smb-elite-bg/50',
+    bgSecondary: 'to-smb-elite-fg/50',
+    github: 'var(--color-smb-elite-fg)'
+  }}
   href={{
     website: 'https://smbelite.net/',
     github: 'https://github.com/tony-montemuro/smb-website'
@@ -18,7 +22,7 @@
     A leaderboard website for games in SEGA's <a
       href="https://en.wikipedia.org/wiki/Super_Monkey_Ball"
       target="_blank"
-      class="text-teal-200 underline"
+      class="text-(--color-smb-elite-fg) underline"
       >Super Monkey Ball series
     </a>.
   </span>
