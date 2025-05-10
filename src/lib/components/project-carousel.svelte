@@ -97,7 +97,7 @@
   </button>
 
   <ul
-    class="slides absolute top-0 m-0 flex h-full w-full list-none items-center overflow-x-scroll scroll-smooth p-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+    class="slides absolute top-0 m-0 flex h-full w-full list-none items-center overflow-x-scroll scroll-smooth p-0 outline-none [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
     tabindex="-1"
   >
     {#each images as image}
