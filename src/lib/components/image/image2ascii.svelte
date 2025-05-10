@@ -1,8 +1,19 @@
 <script lang="ts">
-  import type { Width } from '$lib/types/width.svelte';
   import Image2Ascii from '$lib/assets/image2ascii.png';
+  import type { ResponsiveWidth } from '$lib/types/responsive-width.svelte';
 
-  let { width }: Width = $props();
+  let { mobileWidth, desktopWidth }: ResponsiveWidth = $props();
 </script>
 
-<img src={Image2Ascii} alt="image2ascii logo" class="h-auto" style="width: {width}px" />
+<img
+  src={Image2Ascii}
+  alt="image2ascii logo"
+  class="h-auto md:hidden"
+  style="width: {mobileWidth}px"
+/>
+<img
+  src={Image2Ascii}
+  alt="image2ascii logo"
+  class="hidden h-auto md:block"
+  style="width: {desktopWidth}px"
+/>

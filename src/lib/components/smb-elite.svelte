@@ -15,7 +15,7 @@
     website: 'https://smbelite.net/',
     github: 'https://github.com/tony-montemuro/smb-website'
   }}
-  logo={{ Logo: SmbElite, width: 300 }}
+  logo={{ Logo: SmbElite, width: { desktopWidth: 250, mobileWidth: 200 } }}
   images={smbEliteImages}
 >
   <span>

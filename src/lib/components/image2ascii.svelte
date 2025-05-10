@@ -6,12 +6,12 @@
 
 <Project
   id="image2ascii"
-  color={{ bgPrimary: 'from-gray-400/50', bgSecondary: 'to-gray-700/50', github: '#111827' }}
+  color={{ bgPrimary: 'from-gray-100/50', bgSecondary: 'to-gray-700/50', github: '#111827' }}
   href={{
     website: 'https://image2ascii.net/',
     github: 'https://github.com/tony-montemuro/image2ascii'
   }}
-  logo={{ Logo: Image2ascii, width: 325 }}
+  logo={{ Logo: Image2ascii, width: { mobileWidth: 200, desktopWidth: 325 } }}
   images={image2AsciiImages}
 >
   <span>
