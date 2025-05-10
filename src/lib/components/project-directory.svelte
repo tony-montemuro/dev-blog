@@ -4,7 +4,7 @@
   import ScrollButton from './scroll-button.svelte';
 </script>
 
-<div class="h-app flex snap-start snap-always flex-col p-(--app-padding)">
+<div id="project-directory" class="h-app flex snap-start snap-always flex-col p-(--app-padding)">
   <div class="flex flex-col gap-5">
     <h1 class="h-fit text-8xl">Projects</h1>
     <em class="text-3xl">Click on each project to learn more:</em>

@@ -4,10 +4,11 @@
   interface Props {
     sectionId: string;
     bg: string;
+    padding?: 'small' | 'large';
     children: Snippet;
   }
 
-  let { sectionId, bg, children }: Props = $props();
+  let { sectionId, bg, padding = 'large', children }: Props = $props();
   const buttonId = `button-${sectionId}`;
 
   onMount(() => {
@@ -25,7 +26,11 @@
   type="button"
   class="flex items-center rounded-full border border-transparent {bg} cursor-pointer transition-colors duration-300 ease-in-out hover:border-green-400"
 >
-  <div class="flex w-fit flex-row items-center gap-1.5 rounded-full p-6">
+  <div
+    class="flex w-fit flex-row items-center gap-1.5 rounded-full {padding === 'small'
+      ? 'p-3'
+      : 'p-6'}"
+  >
     {@render children()}
   </div>
 </button>
