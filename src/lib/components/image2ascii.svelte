@@ -31,4 +31,5 @@
     <span class="text-blue-400">User-friendly</span> and
     <span class="text-blue-400">responsive</span> design.
   </span>
+  <span><span class="text-blue-400">Clickable</span> ASCII art to copy to clipboard.</span>
 </Project>
