@@ -3,12 +3,13 @@
   import LinkedIn from '$lib/components/svg/linkedin.svelte';
   import Contact from '$lib/components/svg/contact.svelte';
   import '../app.css';
+  import Logo from '$lib/components/svg/logo.svelte';
   let { children } = $props();
 </script>
 
 <header class="h-nav sticky top-0 z-50 flex items-center justify-between bg-green-400 px-2">
   <div>
-    <a href="/">Tony Montemuro</a>
+    <a href="/"><Logo class="h-8 w-8" /></a>
   </div>
   <div class="flex gap-3">
     <a href="/projects">Projects</a>
