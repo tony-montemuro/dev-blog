@@ -2,13 +2,11 @@
   import type { Post } from '$lib/types/post.svelte';
   import type { Component } from 'svelte';
 
-  interface PropsData {
-    Content: Component;
-    meta: Post;
+  interface Props {
+    data: { Content: Component; meta: Post };
   }
 
-  let props = $props();
-  let data: PropsData = props.data;
+  let { data }: Props = $props();
   let { meta, Content } = data;
 </script>
 

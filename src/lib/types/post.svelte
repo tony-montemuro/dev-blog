@@ -4,5 +4,6 @@
     slug: string;
     created: string;
     updated: string;
+    categories: string[];
   }
 </script>
