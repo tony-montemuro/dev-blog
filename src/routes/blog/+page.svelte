@@ -1,4 +1,5 @@
 <script lang="ts">
+  import CategoryButtons from '$lib/components/category-buttons.svelte';
   import Grid from '$lib/components/grid.svelte';
   import PostListContainer from '$lib/components/post-list-container.svelte';
   import PostList from '$lib/components/post-list.svelte';
@@ -14,15 +15,7 @@
 <Grid />
 <PostListContainer>
   <h1 class="text-7xl">Blog</h1>
-  <div class="flex gap-3">
-    {#each data.categories as category}
-      <a
-        href={`/blog/category/${category}`}
-        class="rounded-2xl border p-2 transition-colors duration-150 hover:bg-gray-200/20"
-        >{category}</a
-      >
-    {/each}
-  </div>
+  <CategoryButtons categories={data.categories} />
   <hr />
   <PostList posts={data.posts} />
 </PostListContainer>

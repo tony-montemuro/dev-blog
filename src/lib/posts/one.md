@@ -1,7 +1,7 @@
 ---
 title: "Test blog"
-created: "2025-12-23"
-updated: "2025-05-12"
+created: "2025-05-12"
+updated: "2025-05-14"
 categories:
     - "foo"
     - "bar"

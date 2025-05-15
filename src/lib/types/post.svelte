@@ -1,9 +1,11 @@
 <script lang="ts" context="module">
+  export type Date = `${string}-${string}-${string}`;
+
   export interface Post {
     title: string;
     slug: string;
-    created: string;
-    updated: string;
+    created: Date;
+    updated: Date | undefined;
     categories: string[];
   }
 </script>
