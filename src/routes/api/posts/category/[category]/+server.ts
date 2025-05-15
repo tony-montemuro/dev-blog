@@ -1,7 +1,7 @@
-import { json } from "@sveltejs/kit";
+import { json, type ServerLoadEvent } from "@sveltejs/kit";
 import fetchPosts from "$lib/scripts/fetchPosts";
 
-export const GET = async ({ params }) => {
+export const GET = async ({ params }: ServerLoadEvent) => {
     const options = {
         category: params.category
     };

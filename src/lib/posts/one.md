@@ -12,3 +12,9 @@ categories:
 Let's just *see* if this **really** works -- `or not`!
 
 ## Another header
+
+```js
+const foo = 1;
+const bar = 3;
+const sum = foo + bar; // sum = 4
+```
