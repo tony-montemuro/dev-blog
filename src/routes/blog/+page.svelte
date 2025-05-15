@@ -1,6 +1,7 @@
 <script lang="ts">
   import Grid from '$lib/components/grid.svelte';
-  import PostMetadata from '$lib/components/post-metadata.svelte';
+  import PostListContainer from '$lib/components/post-list-container.svelte';
+  import PostList from '$lib/components/post-list.svelte';
   import type { Post } from '$lib/types/post.svelte';
 
   interface Props {
@@ -11,17 +12,17 @@
 </script>
 
 <Grid />
-<div class="animate-floatin flex justify-center p-(--app-padding)">
-  <div class="flex w-200 flex-col gap-4 rounded-2xl bg-gray-400/20 p-(--app-padding)">
-    <h1 class="text-7xl">Blog</h1>
-    <div class="flex gap-3">
-      {#each data.categories as category}
-        <div class="rounded-2xl border p-2">{category}</div>
-      {/each}
-    </div>
-    <hr />
-    {#each data.posts as post}
-      <PostMetadata {post} />
+<PostListContainer>
+  <h1 class="text-7xl">Blog</h1>
+  <div class="flex gap-3">
+    {#each data.categories as category}
+      <a
+        href={`/blog/category/${category}`}
+        class="rounded-2xl border p-2 transition-colors duration-150 hover:bg-gray-200/20"
+        >{category}</a
+      >
     {/each}
   </div>
-</div>
+  <hr />
+  <PostList posts={data.posts} />
+</PostListContainer>

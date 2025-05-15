@@ -19,8 +19,8 @@ function getCategories(posts: Post[]): string[] {
         .map(([category]) => category);
 }
 
-export async function load({ url }) {
-    const postRes = await fetch(`${url.origin}/api/posts.json`);
+export async function load({ fetch }) {
+    const postRes = await fetch(`/api/posts.json`);
     const posts = await postRes.json();
 
     const categories = getCategories(posts);

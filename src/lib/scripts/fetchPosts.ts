@@ -1,6 +1,10 @@
 import type { Post } from "$lib/types/post.svelte";
 
-export default async function fetchPosts(): Promise<Post[]> {
+interface Options {
+    category?: string | null;
+};
+
+export default async function fetchPosts({ category = null }: Options = {}): Promise<Post[]> {
     const fileType: string = '.md';
     let posts: Post[] = [];
 
@@ -14,6 +18,10 @@ export default async function fetchPosts(): Promise<Post[]> {
             posts.push(post);
         }
     });
+
+    if (category) {
+        posts = posts.filter(post => post.categories.includes(category));
+    }
 
     return posts;
 };
