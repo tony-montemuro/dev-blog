@@ -16,3 +16,14 @@ const foo = 1;
 const bar = 3;
 const sum = foo + bar; // sum = 4
 ```
+
+Here's some more code:
+
+```go
+func main() {
+    foo := 3;
+    if (foo > 2) {
+        fmt.Println("well, obv");
+    }
+}
+```
