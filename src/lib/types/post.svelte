@@ -5,7 +5,9 @@
     title: string;
     slug: string;
     created: Date;
-    updated: Date | undefined;
+    updated?: Date;
+    description: string;
+    image?: string;
     categories: string[];
   }
 </script>

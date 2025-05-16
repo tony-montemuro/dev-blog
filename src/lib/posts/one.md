@@ -1,7 +1,9 @@
 ---
-title: "Test blog"
+title: "Dynamic Backgrounds in Svelte 5"
 created: "2025-05-12"
-updated: "2025-05-14"
+updated: "2025-05-15"
+description: "Do you want to spice up your web application? Learn how to create a dynamic, animated background using Svelte 5, TypeScript, and TailwindCSS."
+image: "/svelte-bg.png"
 categories:
     - "foo"
     - "bar"

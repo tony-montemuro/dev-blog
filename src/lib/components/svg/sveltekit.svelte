@@ -1,3 +1,7 @@
+<script lang="ts">
+  let { width = 27, height = 32 } = $props();
+</script>
+
 <svg
   version="1.1"
   id="Layer_1"
@@ -6,11 +10,12 @@
   x="0px"
   y="0px"
   viewBox="0 0 98.1 118"
-  style="enable-background:new 0 0 98.1 118;"
+  style="enable-background:new 0 0 98.1 118; filter: drop-shadow(12px 20px 8px rgba(0, 0, 0, 0.6));"
   xml:space="preserve"
-  width="27"
-  height="32"
+  {width}
+  {height}
 >
+  >
   <path
     class="st0"
     d="M91.8,15.6C80.9-0.1,59.2-4.7,43.6,5.2L16.1,22.8C8.6,27.5,3.4,35.2,1.9,43.9c-1.3,7.3-0.2,14.8,3.3,21.3
