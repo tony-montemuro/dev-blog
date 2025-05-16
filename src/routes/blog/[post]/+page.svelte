@@ -18,14 +18,15 @@
 <article class="prose prose-invert lg:prose-xl animate-floatin mx-auto p-(--app-padding)">
   <div class="mb-3">
     <h1>{meta.title}</h1>
+
     <div class="text-md flex flex-col">
-      <div class="flex justify-between text-right">
-        <span class="text-xl">Tony Montemuro</span>
+      <div class="flex justify-between">
+        <span class="text-md sm:text-xl">Tony Montemuro</span>
         <div class="flex flex-col">
-          <span class="text-sm">
+          <span class="text-right text-xs sm:text-sm">
             {formatDate(meta.created)}
           </span>
-          <em class="text-sm">
+          <em class="text-right text-xs sm:text-sm">
             {#if meta.updated}Last Updated {formatDate(meta.updated)}{/if}
           </em>
         </div>
@@ -37,11 +38,14 @@
       {/if}
     </div>
   </div>
+
   <div class="mb-10">
     <CategoryButtons categories={meta.categories} />
   </div>
+
   <div class="mb-10">
     <hr />
   </div>
+
   <Content />
 </article>

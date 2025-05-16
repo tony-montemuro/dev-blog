@@ -11,7 +11,7 @@
 
 <a
   href={`/blog/${post.slug}`}
-  class="flex cursor-pointer flex-col gap-2 rounded border p-3 text-white/80 transition-colors duration-200 hover:bg-gray-200/20 hover:text-white"
+  class="flex cursor-pointer flex-col gap-2 rounded border-2 border-neutral-400/80 p-3 text-white/80 transition-colors duration-200 hover:border-green-300 hover:bg-green-200/20 hover:text-white"
 >
   <div class="flex items-center gap-4">
     {#if post.image}
@@ -30,7 +30,7 @@
     </div>
   </div>
 
-  <hr class="opacity-80" />
+  <hr class="text-neutral-400 opacity-80" />
 
   <div>
     <span>{post.description}</span>

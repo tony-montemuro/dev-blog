@@ -10,7 +10,7 @@
   {#each categories as category}
     <a
       href={`/blog/category/${category}`}
-      class="rounded-2xl border px-3 py-2 no-underline transition-colors duration-150 hover:bg-gray-200/20"
+      class="rounded-2xl border-2 border-green-800/80 bg-green-400/80 px-3 py-2 text-black no-underline transition-colors duration-150 hover:border-green-800 hover:bg-green-400"
     >
       {category}
     </a>

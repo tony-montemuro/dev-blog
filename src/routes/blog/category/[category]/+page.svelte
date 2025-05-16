@@ -20,6 +20,5 @@
     <ArrowLeft />
     <span class="underline underline-offset-2">Back to all blogs</span>
   </a>
-  <hr />
   <PostList {posts} />
 </PostListContainer>

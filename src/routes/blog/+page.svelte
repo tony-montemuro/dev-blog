@@ -16,6 +16,5 @@
 <PostListContainer>
   <h1 class="text-7xl">Blog</h1>
   <CategoryButtons categories={data.categories} />
-  <hr />
   <PostList posts={data.posts} />
 </PostListContainer>
