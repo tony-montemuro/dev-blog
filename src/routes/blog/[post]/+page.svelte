@@ -19,13 +19,22 @@
   <div class="mb-3">
     <h1>{meta.title}</h1>
     <div class="text-md flex flex-col">
-      <span>
-        {formatDate(meta.created)}
-        <em>
-          {#if meta.updated}(Updated {formatDate(meta.updated)}){/if}
-        </em>
-      </span>
-      <span>Tony Montemuro</span>
+      <div class="flex justify-between text-right">
+        <span class="text-xl">Tony Montemuro</span>
+        <div class="flex flex-col">
+          <span class="text-sm">
+            {formatDate(meta.created)}
+          </span>
+          <em class="text-sm">
+            {#if meta.updated}Last Updated {formatDate(meta.updated)}{/if}
+          </em>
+        </div>
+      </div>
+      {#if meta.image}
+        <img src={meta.image} class="rounded-2xl border-2 border-gray-500/60" alt="Blog" />
+      {:else}
+        <div class="my-4"></div>
+      {/if}
     </div>
   </div>
   <div class="mb-10">
