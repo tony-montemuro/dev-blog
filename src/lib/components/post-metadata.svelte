@@ -13,13 +13,13 @@
   href={`/blog/${post.slug}`}
   class="flex cursor-pointer flex-col gap-2 rounded border-2 border-neutral-300/80 p-3 text-white/80 transition-colors duration-200 hover:border-green-400 hover:bg-green-200/20 hover:text-white"
 >
-  <div class="flex items-center gap-4">
+  <div class="flex items-center sm:gap-4">
     {#if post.image}
-      <div class="w-96">
+      <div class="w-0 sm:w-48 md:w-64 lg:w-96">
         <img
           src={post.image}
           alt="Blog preview"
-          class="border-netural-300/80 h-auto w-full rounded-xl border-2"
+          class="border-netural-300/80 hidden h-auto w-full rounded-xl border-2 sm:block"
         />
       </div>
     {/if}
