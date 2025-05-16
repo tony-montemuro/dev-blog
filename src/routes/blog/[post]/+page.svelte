@@ -32,7 +32,7 @@
         </div>
       </div>
       {#if meta.image}
-        <img src={meta.image} class="rounded-2xl border-2 border-gray-500/60" alt="Blog" />
+        <img src={meta.image} class="rounded-2xl border-2 border-slate-500/60" alt="Blog" />
       {:else}
         <div class="my-4"></div>
       {/if}
