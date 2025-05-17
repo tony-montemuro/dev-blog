@@ -8,12 +8,12 @@
 </script>
 
 <header class="h-nav sticky top-0 z-50 flex items-center justify-between bg-green-400 px-2">
-  <div>
+  <div title="Home">
     <a href="/"><Logo class="h-8 w-8" /></a>
   </div>
   <div class="flex gap-3">
-    <a href="/projects">Projects</a>
-    <a href="/blog">Blog</a>
+    <a href="/projects" title="Projects">Projects</a>
+    <a href="/blog" title="Blog">Blog</a>
   </div>
   <div class="flex gap-3">
     <a href="/contact" title="Contact Me"><Contact class="h-8 w-8" /></a>

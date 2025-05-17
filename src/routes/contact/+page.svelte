@@ -3,6 +3,7 @@
   import Grid from '$lib/components/grid.svelte';
   import { onMount } from 'svelte';
   import Spinner from '$lib/components/svg/spinner.svelte';
+  import { page } from '$app/state';
 
   interface Message {
     content: string | null;
@@ -51,6 +52,10 @@
   };
 
   let form: HTMLFormElement;
+  const href = page.url.href;
+  const title = 'Contact | Tony Montemuro';
+  const description =
+    'Get in touch with Tony Montemuro. Send me a direct email through this convenient form.';
 
   onMount(() => {
     const inputs = document.querySelectorAll('.input');
@@ -69,6 +74,20 @@
     form.addEventListener('keypress', () => (message.content = null));
   });
 </script>
+
+<svelte:head>
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" {href} />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={href} />
+
+  <meta property="twitter:title" content={title} />
+  <meta property="twitter:description" content={description} />
+</svelte:head>
 
 <Grid />
 <div class="w-app lg:h-app flex items-center justify-center p-(--app-padding)">
