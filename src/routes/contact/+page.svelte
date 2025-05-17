@@ -107,6 +107,7 @@
           id="name"
           required
           class="rounded border border-gray-400 bg-gray-700/50 p-2 outline-none"
+          maxlength="50"
         />
       </div>
 
@@ -118,6 +119,7 @@
           id="subject"
           required
           class="rounded border border-gray-400 bg-gray-700/50 p-2 outline-none"
+          maxlength="78"
         />
       </div>
 
@@ -129,6 +131,7 @@
           id="email"
           required
           class="rounded border border-gray-400 bg-gray-700/50 p-2 outline-none"
+          maxlength="254"
         />
       </div>
 
@@ -140,6 +143,7 @@
           rows="7"
           class="rounded border border-gray-400 bg-gray-700/50 p-2 outline-none"
           title="Not required, but highly recommended."
+          maxlength="2000"
         ></textarea>
       </div>
 
