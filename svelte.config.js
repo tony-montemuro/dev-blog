@@ -3,7 +3,7 @@ import adapter from '@sveltejs/adapter-auto';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import { createHighlighter, } from 'shiki';
+import { getSingletonHighlighter } from 'shiki';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -15,7 +15,7 @@ const config = {
         highlight: {
             highlighter: async (code, lang = 'text') => {
                 const theme = 'catppuccin-mocha';
-                const highlighter = await createHighlighter({
+                const highlighter = await getSingletonHighlighter({
                     themes: [theme],
                     langs: ['javascript', 'typescript', 'go', 'html', 'css', 'svelte']
                 });
