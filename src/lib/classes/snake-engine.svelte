@@ -1,13 +1,11 @@
 <script lang="ts" module>
   import type { Point } from '$lib/types/point.svelte';
   import type { Line } from '$lib/types/line.svelte';
-
-  type Quadrant = 1 | 2 | 3 | 4;
+  import type { Grid } from '$lib/types/grid.svelte';
+  import type { Quadrant } from '$lib/types/quadrant.svelte';
 
   export class SnakeEngine {
-    private points: Point[][];
-    private width: number;
-    private height: number;
+    private grid: Grid;
     private direction: 'north' | 'east' | 'south' | 'west';
     private rate: number;
     private length: number;
@@ -16,16 +14,8 @@
     private id: number = 1;
     private snake = $state<Line[]>([]);
 
-    constructor(
-      points: Point[][],
-      rate: number,
-      length: number = 20,
-      quadrent: Quadrant = 1,
-      padding: number = 3
-    ) {
-      this.points = points;
-      this.height = points.length;
-      this.width = points[0].length;
+    constructor(grid: Grid, rate: number, length: number, quadrent: Quadrant, padding: number) {
+      this.grid = grid;
       this.rate = rate;
       this.length = length;
       this.initialQuadrant = quadrent;
@@ -45,8 +35,8 @@
       const { p1, p2 }: Line = line;
 
       return {
-        p1: this.points[p1.y][p1.x],
-        p2: this.points[p2.y][p2.x],
+        p1: { x: p1.x * this.grid.colsGap, y: p1.y * this.grid.rowsGap },
+        p2: { x: p2.x * this.grid.colsGap, y: p2.y * this.grid.rowsGap },
         id: line.id
       };
     }
@@ -87,13 +77,13 @@
       line = { p1: prevPoint, p2: nextPoint, id: this.id };
 
       if (nextPoint.x < 0) {
-        nextPoint.x = this.width - 1;
+        nextPoint.x = this.grid.cols - 1;
         this.direction = 'west';
         line.p1 = nextPoint;
         line.p2 = this.getNextPoint(nextPoint);
       }
 
-      if (nextPoint.x >= this.width) {
+      if (nextPoint.x >= this.grid.cols) {
         nextPoint.x = 0;
         this.direction = 'east';
         line.p1 = nextPoint;
@@ -101,13 +91,13 @@
       }
 
       if (nextPoint.y < 0) {
-        nextPoint.y = this.height - 1;
+        nextPoint.y = this.grid.rows - 1;
         this.direction = 'north';
         line.p1 = nextPoint;
         line.p2 = this.getNextPoint(nextPoint);
       }
 
-      if (nextPoint.y >= this.height) {
+      if (nextPoint.y >= this.grid.rows) {
         nextPoint.y = 0;
         this.direction = 'south';
         line.p1 = nextPoint;
@@ -115,7 +105,7 @@
       }
 
       this.addLine(line);
-      this.id++;
+      this.id = (this.id + 1) % (this.length + 1);
     }
 
     private addLine(line: Line): void {
@@ -133,23 +123,23 @@
     private getInitialPoint(): Point {
       let lowerX: number = 0,
         lowerY: number = 0,
-        higherX: number = this.width,
-        higherY: number = this.height;
+        higherX: number = this.grid.cols,
+        higherY: number = this.grid.rows;
 
       if (this.initialQuadrant === 1 || this.initialQuadrant === 2) {
-        higherY = this.height / 2;
+        higherY = this.grid.rows / 2;
       }
 
       if (this.initialQuadrant === 3 || this.initialQuadrant === 4) {
-        lowerY = this.height / 2;
+        lowerY = this.grid.rows / 2;
       }
 
       if (this.initialQuadrant === 2 || this.initialQuadrant === 3) {
-        higherX = this.width / 2;
+        higherX = this.grid.cols / 2;
       }
 
       if (this.initialQuadrant === 1 || this.initialQuadrant === 4) {
-        lowerX = this.width / 2;
+        lowerX = this.grid.cols / 2;
       }
 
       return {

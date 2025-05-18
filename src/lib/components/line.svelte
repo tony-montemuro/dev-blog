@@ -1,5 +1,10 @@
 <script lang="ts">
-  import type { Line, Timers } from '$lib/types/line.svelte';
+  import type { Line } from '$lib/types/line.svelte';
+
+  interface Timers {
+    fadeInTimer: number;
+    fadeOutTimer: number;
+  }
 
   interface Props {
     line: Line;
@@ -14,6 +19,7 @@
     timers = { fadeInTimer: 0, fadeOutTimer: 0 },
     opacity = 0.3
   }: Props = $props();
+
   let { p1, p2 }: Line = line;
   let lineLength = $derived(Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2)));
   let { fadeInTimer, fadeOutTimer }: Timers = timers;
@@ -51,7 +57,7 @@
   .animated {
     stroke-dashoffset: var(--line-length);
     animation:
-      dash var(--fadeInTime) ease-in forwards,
+      dash var(--fadeInTime) cubic-bezier(0, 0.5, 0.5, 1) forwards,
       fadeOut var(--fadeOutTime) ease-out forwards;
     animation-delay: 0ms, var(--fadeInTime);
   }

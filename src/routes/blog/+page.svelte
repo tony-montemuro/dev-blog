@@ -1,10 +1,10 @@
 <script lang="ts">
   import CategoryButtons from '$lib/components/category-buttons.svelte';
-  import Grid from '$lib/components/grid.svelte';
   import PostListContainer from '$lib/components/post-list-container.svelte';
   import PostList from '$lib/components/post-list.svelte';
   import type { Post } from '$lib/types/post.svelte';
   import { page } from '$app/state';
+  import GridBackground from '$lib/components/grid-background.svelte';
 
   interface Props {
     data: { posts: Post[]; categories: string[] };
@@ -32,7 +32,7 @@
   <meta property="twitter:description" content={description} />
 </svelte:head>
 
-<Grid />
+<GridBackground />
 <PostListContainer>
   <h1 class="text-7xl">Blog</h1>
   <CategoryButtons categories={data.categories} />

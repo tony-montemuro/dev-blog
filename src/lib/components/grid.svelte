@@ -1,106 +1,121 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
-  import type { Point } from '$lib/types/point.svelte';
-  import Structure from './structure.svelte';
   import Line from './line.svelte';
-  import Background from './background.svelte';
   import { SnakeEngine } from '$lib/classes/snake-engine.svelte';
+  import type { Line as LineType } from '$lib/types/line.svelte';
+  import type { Grid } from '$lib/types/grid.svelte';
+  import type { Quadrant } from '$lib/types/quadrant.svelte';
 
-  const width = 30;
-  const height = 17;
-  const SNAKE_LENGTH = 30;
-  const EXTEND_TIME = 350;
-
-  let gridPoints = $state<any[]>([]);
-  let gridLines = $derived.by<any[]>((): any[] => {
-    let gridLines: any[] = [];
-
-    if (gridPoints.length > 0) {
-      for (let y = 0; y < height; y++) {
-        for (let x = 0; x < width - 1; x++) {
-          gridLines.push({
-            p1: gridPoints[y][x],
-            p2: gridPoints[y][x + 1]
-          });
-        }
-      }
-
-      for (let y = 0; y < height - 1; y++) {
-        for (let x = 0; x < width; x++) {
-          gridLines.push({
-            p1: gridPoints[y][x],
-            p2: gridPoints[y + 1][x]
-          });
-        }
-      }
-    }
-
-    return gridLines;
-  });
-  let snakeEngines = $derived.by<SnakeEngine[] | null>((): SnakeEngine[] | null => {
-    if (gridLines.length > 0) {
-      return [
-        new SnakeEngine(gridPoints, EXTEND_TIME, SNAKE_LENGTH, 1),
-        new SnakeEngine(gridPoints, EXTEND_TIME, SNAKE_LENGTH, 2),
-        new SnakeEngine(gridPoints, EXTEND_TIME, SNAKE_LENGTH, 3),
-        new SnakeEngine(gridPoints, EXTEND_TIME, SNAKE_LENGTH, 4)
-      ];
-    }
-
-    return null;
-  });
-
-  onMount(() => {
-    window.addEventListener('resize', updateGridPoints);
-    updateGridPoints();
-  });
-
-  function updateGridPoints() {
-    const pointElements = document.querySelectorAll('.grid-point');
-
-    // map of grid point coordinates to true HTML coordinates
-    const points = new Array(height);
-    for (let i = 0; i < points.length; i++) {
-      points[i] = new Array(width);
-    }
-
-    pointElements.forEach((element) => {
-      const [_, x, y] = element.id.split('-').map((p) => parseInt(p));
-      const rect = element.getBoundingClientRect();
-      const navHeight = window.getComputedStyle(document.body).getPropertyValue('--navbar-height');
-
-      const point: Point = {
-        x: rect.left,
-        y: rect.top - Number.parseInt(navHeight)
-      };
-      points[y][x] = point;
-    });
-
-    gridPoints = points;
+  interface Props {
+    numLineSegments?: number;
+    tickRate?: number;
+    color?: string;
+    targetCellLength?: number;
+    lineOpacity?: number;
   }
 
-  $inspect(gridPoints);
-  $inspect(gridLines);
+  let {
+    numLineSegments = 25,
+    tickRate = 400,
+    color = 'green',
+    targetCellLength = 40,
+    lineOpacity = 0.7
+  }: Props = $props();
+
+  let width = $state<number>(0);
+  let height = $state<number>(0);
+
+  let grid = $state<Grid>({
+    rows: 0,
+    cols: 0,
+    rowsGap: 0,
+    colsGap: 0
+  });
+
+  const snakeEngines = $derived.by<SnakeEngine[]>((): SnakeEngine[] => {
+    if (width <= 0 && height <= 0) {
+      return [];
+    }
+
+    let quadrants: Quadrant[];
+    let padding: number;
+
+    if (grid.rows < 12 || grid.cols < 12) {
+      quadrants = [2, 4];
+      padding = 3;
+    } else {
+      quadrants = [1, 2, 3, 4];
+      padding = 2;
+    }
+
+    return quadrants.map(
+      (quadrant) => new SnakeEngine(grid, tickRate, numLineSegments, quadrant, padding)
+    );
+  });
+
+  let backgroundLines = $derived.by<LineType[]>((): LineType[] => {
+    if (width <= 0 && height <= 0) {
+      return [];
+    }
+
+    const lines: LineType[] = [];
+    for (let dx = 0; dx < grid.cols; dx++) {
+      const x = dx * grid.colsGap;
+      lines.push({
+        p1: { x, y: 0 },
+        p2: { x, y: height }
+      });
+    }
+
+    for (let dy = 0; dy < grid.rows; dy++) {
+      const y = dy * grid.rowsGap;
+      lines.push({
+        p1: { x: 0, y },
+        p2: { x: width, y }
+      });
+    }
+
+    return lines;
+  });
+
+  function updateGrid() {
+    const rows = Math.floor(height / targetCellLength) + 1;
+    const cols = Math.floor(width / targetCellLength) + 1;
+    const rowsGap = height / (rows - 1);
+    const colsGap = width / (cols - 1);
+
+    grid = { rows, cols, rowsGap, colsGap };
+  }
+
+  $effect(() => {
+    if (width > 0 && height > 0) {
+      updateGrid();
+    }
+  });
 </script>
 
-<Structure {width} {height} />
-<Background points={gridPoints}>
-  {#each gridLines as line}
-    {#key line}
-      <Line {line} />
-    {/key}
-  {/each}
-  {#each snakeEngines ?? [] as snakeEngine}
-    {#each snakeEngine.getSnake() ?? [] as line (line.id)}
-      <Line
-        stroke="green"
-        {line}
-        timers={{
-          fadeInTimer: EXTEND_TIME,
-          fadeOutTimer: EXTEND_TIME * SNAKE_LENGTH - EXTEND_TIME
-        }}
-        opacity={0.7}
-      />
+<div
+  bind:offsetWidth={width}
+  bind:offsetHeight={height}
+  class="pointer-events-none absolute inset-0 h-full w-full"
+>
+  <svg class="h-full w-full">
+    {#each backgroundLines as line}
+      {#key line}
+        <Line {line} />
+      {/key}
     {/each}
-  {/each}
-</Background>
+    {#each snakeEngines as snakeEngine}
+      {#each snakeEngine.getSnake() as line (line.id)}
+        <Line
+          stroke={color}
+          {line}
+          timers={{
+            fadeInTimer: tickRate,
+            fadeOutTimer: tickRate * numLineSegments - tickRate
+          }}
+          opacity={lineOpacity}
+        />
+      {/each}
+    {/each}
+  </svg>
+</div>

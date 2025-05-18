@@ -1,9 +1,9 @@
 <script lang="ts">
   import emailjs from '@emailjs/browser';
-  import Grid from '$lib/components/grid.svelte';
   import { onMount } from 'svelte';
   import Spinner from '$lib/components/svg/spinner.svelte';
   import { page } from '$app/state';
+  import GridBackground from '$lib/components/grid-background.svelte';
 
   interface Message {
     content: string | null;
@@ -89,7 +89,7 @@
   <meta property="twitter:description" content={description} />
 </svelte:head>
 
-<Grid />
+<GridBackground />
 <div class="w-app lg:h-app flex items-center justify-center p-(--app-padding)">
   <article class="rounded-2xl border border-white bg-slate-800/70 p-8">
     <form bind:this={form} class="flex w-full flex-col gap-3">
@@ -143,7 +143,7 @@
           rows="7"
           class="rounded border border-gray-400 bg-gray-700/50 p-2 outline-none"
           title="Not required, but highly recommended."
-          maxlength="2000"
+          maxlength="5000"
         ></textarea>
       </div>
 

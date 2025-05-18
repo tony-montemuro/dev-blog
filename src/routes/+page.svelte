@@ -1,8 +1,8 @@
 <script lang="ts">
-  import Grid from '$lib/components/grid.svelte';
   import Intro from '$lib/components/intro.svelte';
   import TechnologyList from '$lib/components/technology-list.svelte';
   import { page } from '$app/state';
+  import GridBackground from '$lib/components/grid-background.svelte';
 
   const href = page.url.href;
   const title = 'Tony Montemuro';
@@ -23,6 +23,7 @@
   <meta property="twitter:title" content={title} />
   <meta property="twitter:description" content={description} />
 </svelte:head>
-<Grid />
+
+<GridBackground />
 <Intro />
 <TechnologyList />
