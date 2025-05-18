@@ -93,11 +93,7 @@
   });
 </script>
 
-<div
-  bind:offsetWidth={width}
-  bind:offsetHeight={height}
-  class="pointer-events-none absolute inset-0 h-full w-full"
->
+<div bind:offsetWidth={width} bind:offsetHeight={height} class="pointer-events-none h-full w-full">
   <svg class="h-full w-full">
     {#each backgroundLines as line}
       {#key line}
