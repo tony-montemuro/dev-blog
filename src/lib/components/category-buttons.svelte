@@ -6,7 +6,7 @@
   let { categories }: Props = $props();
 </script>
 
-<div class="flex gap-3">
+<div class="flex flex-wrap gap-3">
   {#each categories as category}
     <a
       href={`/blog/category/${category}`}

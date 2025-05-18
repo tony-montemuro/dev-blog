@@ -4,6 +4,7 @@
   import { formatDate } from '$lib/scripts/date';
   import CategoryButtons from '$lib/components/category-buttons.svelte';
   import { page } from '$app/state';
+  import Background from '$lib/components/background.svelte';
 
   interface Props {
     data: { Content: Component; meta: Post };
@@ -41,9 +42,9 @@
   <meta name="twitter:widgets:new-embed-design" content="on" />
 </svelte:head>
 
-<div class="top-nav h-app animate-fadein fixed right-0 bottom-0 left-0 -z-10">
+<Background>
   <div class="h-full w-full bg-radial-[at_50%_0%] from-green-400/10 to-black/80"></div>
-</div>
+</Background>
 <article class="prose prose-invert lg:prose-xl animate-floatin mx-auto p-(--app-padding)">
   <div class="mb-3">
     <h1>{meta.title}</h1>
