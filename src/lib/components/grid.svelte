@@ -41,10 +41,10 @@
 
     if (grid.rows < 12 || grid.cols < 12) {
       quadrants = [2, 4];
-      padding = 3;
+      padding = 2;
     } else {
       quadrants = [1, 2, 3, 4];
-      padding = 2;
+      padding = 3;
     }
 
     return quadrants.map(
@@ -106,8 +106,8 @@
           stroke={color}
           {line}
           timers={{
-            fadeInTimer: tickRate,
-            fadeOutTimer: tickRate * numLineSegments - tickRate
+            dashTimer: tickRate,
+            fadeOutTimer: (tickRate - 1) * numLineSegments
           }}
           opacity={lineOpacity}
         />

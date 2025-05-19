@@ -14,11 +14,11 @@
     private id: number = 1;
     private snake = $state<Line[]>([]);
 
-    constructor(grid: Grid, rate: number, length: number, quadrent: Quadrant, padding: number) {
+    constructor(grid: Grid, rate: number, length: number, quadrant: Quadrant, padding: number) {
       this.grid = grid;
       this.rate = rate;
       this.length = length;
-      this.initialQuadrant = quadrent;
+      this.initialQuadrant = quadrant;
       this.initialPadding = padding;
       this.direction = this.getRandomDirection();
 

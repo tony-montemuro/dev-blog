@@ -2,7 +2,7 @@
   import type { Line } from '$lib/types/line.svelte';
 
   interface Timers {
-    fadeInTimer: number;
+    dashTimer: number;
     fadeOutTimer: number;
   }
 
@@ -16,13 +16,13 @@
   let {
     line,
     stroke = 'grey',
-    timers = { fadeInTimer: 0, fadeOutTimer: 0 },
+    timers = { dashTimer: 0, fadeOutTimer: 0 },
     opacity = 0.3
   }: Props = $props();
 
   let { p1, p2 }: Line = line;
   let lineLength = $derived(Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2)));
-  let { fadeInTimer, fadeOutTimer }: Timers = timers;
+  let { dashTimer, fadeOutTimer }: Timers = timers;
 </script>
 
 <line
@@ -34,8 +34,8 @@
   stroke-opacity={opacity}
   stroke-width="2"
   stroke-dasharray={lineLength}
-  class:animated={fadeInTimer > 0}
-  style="--line-length: {lineLength}px; --fadeInTime: {fadeInTimer}ms; --fadeOutTime: {fadeOutTimer}ms"
+  class:animated={dashTimer > 0 || fadeOutTimer > 0}
+  style="--line-length: {lineLength}px; --dashTime: {dashTimer}ms; --fadeOutTime: {fadeOutTimer}ms"
 />
 
 <style>
@@ -57,8 +57,8 @@
   .animated {
     stroke-dashoffset: var(--line-length);
     animation:
-      dash var(--fadeInTime) cubic-bezier(0, 0.5, 0.5, 1) forwards,
+      dash var(--dashTime) cubic-bezier(0, 0.5, 0.5, 1) forwards,
       fadeOut var(--fadeOutTime) ease-out forwards;
-    animation-delay: 0ms, var(--fadeInTime);
+    animation-delay: 0ms, var(--dashTime);
   }
 </style>
