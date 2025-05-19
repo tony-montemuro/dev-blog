@@ -45,7 +45,7 @@
 <Background>
   <div class="h-full w-full bg-radial-[at_50%_0%] from-green-400/10 to-black/80"></div>
 </Background>
-<article class="prose prose-invert lg:prose-xl animate-floatin mx-auto p-(--app-padding)">
+<article class="prose prose-invert lg:prose-xl animate-fadein mx-auto p-(--app-padding)">
   <div class="mb-3">
     <h1>{meta.title}</h1>
 
