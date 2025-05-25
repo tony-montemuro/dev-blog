@@ -38,8 +38,8 @@ Deployed on Cloudflare Pages using the [cloudflare adapter](https://developers.c
 
 To create a production version of this app:
 
-    ```bash
-    npm run build
-    ```
+```bash
+npm run build
+```
 
 You can preview the production build with `npm run preview`.
