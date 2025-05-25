@@ -1,38 +1,45 @@
-# sv
+# [Developer Blog Website](https://tonymontemuro.com/)
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+This project serves as both my professional portfolio website, as well as my blog. Built using:
 
-## Creating a project
+- [SvelteKit](https://svelte.dev/docs/kit/introduction)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [mdsvex](https://mdsvex.pngwn.io/)
+- [shiki](https://shiki.style/)
+- [EmailJS](https://www.emailjs.com/)
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
-```
+Deployed on Cloudflare Pages using the [cloudflare adapter](https://developers.cloudflare.com/pages/framework-guides/deploy-a-svelte-kit-site/).
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+1. Clone the repository onto your machine:
 
-```bash
-npm run dev
+    ```bash
+    git clone https://github.com/tony-montemuro/dev-blog
+    ```
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+2. Install dependencies:
+
+    ```bash
+    npm install
+    ```
+
+3. Run the development server:
+
+    ```bash
+    npm run dev
+    
+    # or start the server and open the app in a new browser tab
+    npm run dev -- --open
+    ```
 
 ## Building
 
-To create a production version of your app:
+To create a production version of this app:
 
-```bash
-npm run build
-```
+    ```bash
+    npm run build
+    ```
 
 You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
