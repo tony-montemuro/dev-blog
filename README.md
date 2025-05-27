@@ -17,6 +17,9 @@ Deployed on Cloudflare Pages using the [cloudflare adapter](https://developers.c
 
     ```bash
     git clone https://github.com/tony-montemuro/dev-blog
+
+    # or, if you are using ssh:
+    git clone git@github.com:tony-montemuro/dev-blog.git
     ```
 
 2. Install dependencies:
