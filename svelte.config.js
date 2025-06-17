@@ -17,7 +17,7 @@ const config = {
                 const theme = 'catppuccin-mocha';
                 const highlighter = await getSingletonHighlighter({
                     themes: [theme],
-                    langs: ['javascript', 'typescript', 'go', 'html', 'css', 'svelte']
+                    langs: ['javascript', 'typescript', 'go', 'html', 'css', 'svelte', 'lua', 'bash']
                 });
 
                 const html = escapeSvelte(highlighter.codeToHtml(code, { lang, theme }));
