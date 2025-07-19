@@ -23,5 +23,5 @@ export default async function fetchPosts({ category = null }: Options = {}): Pro
         posts = posts.filter(post => post.categories.includes(category));
     }
 
-    return posts;
+    return posts.toSorted((a, b) => b.created.localeCompare(a.created));
 };
