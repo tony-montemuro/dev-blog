@@ -1,6 +1,7 @@
 ---
 title: "Testing is Easy in Golang"
 created: "2025-07-19"
+updated: "2025-07-24"
 description: "Unlike many other languages, testing Go code is easy! Learn about creating tests, organizing with subtests, and essential go test flags."
 image: "/go-test.png"
 categories:
@@ -73,7 +74,7 @@ func timeAgo(pastTime time.Time) string {
 		return fmt.Sprintf(ago, weeks, pluralize("week", weeks))
 	}
 
-	months := days / 30
+	months := min(12, max(1, days/30))
 	if days < 365 {
 		return fmt.Sprintf(ago, months, pluralize("month", months))
 	}
@@ -91,6 +92,11 @@ The code itself is relatively simple:
 - etc.
 
 However, due to the number of cases needed to consider, there are many opportunities for mistakes. And manually testing this function is non-trivial in most application contexts -- you would either need to generate a large amount of synthetic data with various dates, or write a bunch of temporary code within your application, both of which are cumbersome approaches. Writing an actual test is by far the easiest approach!
+
+> Edit: After releasing this article, I actually found a bug with this function! My original code had a more naive approach for calculating the month, which is more intuitive, but caused a slight bug. Thankfully, having testing setup for this function made the bug very easy to track down, and fix!
+
+> The new month calculation seems odd, but do keep in mind, I am not concerned with this function being *completely* accurate in the context of my application. It just needs to be a good enough estimate for most cases.
+
 
 ### Test setup
 
@@ -237,6 +243,16 @@ func TestTimeAgo(t *testing.T) {
 			name:      "1 year",
 			timestamp: time.Now().Add(-1 * 24 * 365 * time.Hour),
 			expected:  "1 year ago",
+		},
+        {
+			name:      "About 1 month",
+			timestamp: time.Now().Add(-1 * 24 * 29 * time.Hour),
+			expected:  "1 month ago",
+		},
+		{
+			name:      "About 1 year ago",
+			timestamp: time.Now().Add(-1 * 24 * 363 * time.Hour),
+			expected:  "12 months ago",
 		},
 	}
 
