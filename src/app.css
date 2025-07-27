@@ -4,57 +4,60 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --font-text: "Hedvig Letters Serif", serif;
-  --animate-floatin: floatin 0.5s;
-  --animate-fadein: fadein 0.5s;
-  --color-smb-elite-bg: rgb(58, 19, 68);
-  --color-smb-elite-fg: rgb(226, 187, 236);
-  --h-app: calc(100vh - var(--navbar-height));
-  --app-padding: calc(var(--spacing) * 8);
-  --git-length: calc(var(--spacing) * 16);
+	--font-text: "Hedvig Letters Serif", serif;
+	--animate-floatin: floatin 0.5s;
+	--animate-fadein: fadein 0.5s;
+	--color-smb-elite-bg: rgb(58, 19, 68);
+	--color-smb-elite-fg: rgb(226, 187, 236);
+	--h-app: calc(100vh - var(--navbar-height));
+	--app-padding: calc(var(--spacing) * 8);
+	--git-length: calc(var(--spacing) * 16);
 
-  @keyframes floatin {
-    0% {
-      opacity: 0; 
-      transform: translateY(3%);
-    },
-    100% {
-      opacity: 1; 
-      transform: translateY(0%);
-    }
-  }
+	@keyframes floatin {
+		0% {
+			opacity: 0;
+			transform: translateY(3%);
+		}
 
-  @keyframes fadein {
-    0% {
-      opacity: 0;
-    },
-    100% {
-      opacity: 1;
-    }
-  }
+		,
+		100% {
+			opacity: 1;
+			transform: translateY(0%);
+		}
+	}
+
+	@keyframes fadein {
+		0% {
+			opacity: 0;
+		}
+
+		,
+		100% {
+			opacity: 1;
+		}
+	}
 }
 
 @layer base {
-  :root {
-    --navbar-height: 56px;
-  }
+	:root {
+		--navbar-height: 56px;
+	}
 }
 
 @layer components {
-  .h-nav {
-    height: var(--navbar-height);
-  }
+	.h-nav {
+		height: var(--navbar-height);
+	}
 
-  .top-nav {
-    top: var(--navbar-height);
-  }
+	.top-nav {
+		top: var(--navbar-height);
+	}
 
-  .h-app {
-    height: var(--h-app);
-  }
+	.h-app {
+		height: var(--h-app);
+	}
 
-  .h-carousel {
-    height: calc(var(--h-app) - (2 * var(--app-padding)));
-  }
+	.h-carousel {
+		height: calc(var(--h-app) - (2 * var(--app-padding)));
+	}
 }
-

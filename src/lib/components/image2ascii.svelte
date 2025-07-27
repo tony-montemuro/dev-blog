@@ -6,7 +6,7 @@
 
 <Project
   id="image2ascii"
-  color={{ bgPrimary: 'from-gray-100/50', bgSecondary: 'to-gray-700/50', github: '#111827' }}
+  color={{ bgPrimary: 'from-gray-400/50', bgSecondary: 'to-gray-800/50', github: '#111827' }}
   href={{
     website: 'https://image2ascii.net/',
     github: 'https://github.com/tony-montemuro/image2ascii'

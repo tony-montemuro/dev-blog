@@ -4,7 +4,7 @@
   import ScrollButton from '$lib/components/scroll-button.svelte';
   import SmbElite from '$lib/components/smb-elite.svelte';
   import Top from '$lib/components/svg/top.svelte';
-  import Wip from '$lib/components/wip.svelte';
+  import Elenchus from '$lib/components/elenchus.svelte';
   import { onMount } from 'svelte';
   import { page } from '$app/state';
   import GridBackground from '$lib/components/grid-background.svelte';
@@ -42,6 +42,6 @@
 <div bind:this={container} class="h-app snap-y snap-mandatory overflow-y-scroll">
   <ProjectDirectory />
   <SmbElite />
+  <Elenchus />
   <Image2Ascii />
-  <Wip />
 </div>

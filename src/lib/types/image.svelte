@@ -1,9 +1,12 @@
 <script lang="ts" context="module">
   import Admin from '$lib/assets/smbelite-admin.png';
+  import Create from '$lib/assets/elenchus-create.png';
   import Dark from '$lib/assets/image2ascii-dark.png';
+  import Edit from '$lib/assets/elenchus-edit.png';
+  import ElenchusHome from '$lib/assets/elenchus-home.png';
   import Games from '$lib/assets/smbelite-games.png';
   import Levelboard from '$lib/assets/smbelite-levelboard.png';
-  import Mobile from '$lib/assets/image2ascii-mobile.png';
+  import Quiz from '$lib/assets/elenchus-quiz.png';
   import Totalizer from '$lib/assets/smbelite-totalizer.png';
   import Twitch from '$lib/assets/image2ascii-twitch.png';
   import Users from '$lib/assets/smbelite-users.png';
@@ -39,6 +42,29 @@
       src: Admin,
       alt: 'SMBElite admin panel',
       caption: 'Site administrator tool for adding new games'
+    }
+  ];
+
+  export const elenchusImages: Image[] = [
+    {
+      src: ElenchusHome,
+      alt: 'Elenchus home page',
+      caption: 'The home page'
+    },
+    {
+      src: Quiz,
+      alt: 'Elenchus quiz page',
+      caption: 'A quiz, with past attempts shown'
+    },
+    {
+      src: Create,
+      alt: 'Elenchus create quiz page',
+      caption: 'The create page, where users can exchange notes for a quiz'
+    },
+    {
+      src: Edit,
+      alt: 'Elenchus edit quiz page',
+      caption: 'Editing an unpublished quiz'
     }
   ];
 
