@@ -5,7 +5,7 @@
   import Elenchus from './svg/elenchus.svelte';
 </script>
 
-<div id="project-directory" class="h-app flex snap-start snap-always flex-col p-(--app-padding)">
+<div id="project-directory" class="h-app p-(--app-padding) flex snap-start snap-always flex-col">
   <div class="flex flex-col gap-5">
     <h1 class="h-fit text-7xl sm:text-8xl">Projects</h1>
     <em class="text-2xl sm:text-3xl">Click on each project to learn more:</em>
@@ -17,7 +17,7 @@
       <ScrollButton sectionId="smb-elite" bg="bg-smb-elite-bg" minWidth={225} maxHeight={100}>
         <SmbElite mobileWidth={125} desktopWidth={125} />
       </ScrollButton>
-      <ScrollButton sectionId="elenchus" bg="bg-orange-400" maxHeight={100} maxWidth={200}>
+      <ScrollButton sectionId="elenchus" bg="bg-orange-400" maxHeight={100} maxWidth={228}>
         <Elenchus mobileWidth={170} desktopWidth={170} />
       </ScrollButton>
       <ScrollButton
