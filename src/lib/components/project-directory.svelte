@@ -17,7 +17,7 @@
       <ScrollButton sectionId="smb-elite" bg="bg-smb-elite-bg" minWidth={225} maxHeight={100}>
         <SmbElite mobileWidth={125} desktopWidth={125} />
       </ScrollButton>
-      <ScrollButton sectionId="elenchus" bg="bg-orange-400" maxHeight={100} maxWidth={225}>
+      <ScrollButton sectionId="elenchus" bg="bg-orange-400" maxHeight={100} maxWidth={200}>
         <Elenchus mobileWidth={170} desktopWidth={170} />
       </ScrollButton>
       <ScrollButton
