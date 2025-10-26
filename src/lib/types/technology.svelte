@@ -10,6 +10,7 @@
   import MySQL from '$lib/components/svg/mysql.svelte';
   import Neovim from '$lib/components/svg/neovim.svelte';
   import Npm from '$lib/components/svg/npm.svelte';
+  import Opensearch from '$lib/components/svg/opensearch.svelte';
   import PHP from '$lib/components/svg/php.svelte';
   import PostgreSQL from '$lib/components/svg/postgresql.svelte';
   import React from '$lib/components/svg/react.svelte';
@@ -60,14 +61,14 @@
 
   export const backend: Technology[] = [
     {
-      name: 'PHP',
-      icon: PHP,
-      url: 'https://www.php.net/'
-    },
-    {
       name: 'Go',
       icon: Go,
       url: 'https://go.dev/'
+    },
+    {
+      name: 'PHP',
+      icon: PHP,
+      url: 'https://www.php.net/'
     },
     {
       name: 'PostgreSQL + PL/pgSQL',
@@ -84,6 +85,11 @@
       name: 'MySQL',
       icon: MySQL,
       url: 'https://www.mysql.com/'
+    },
+    {
+      name: 'OpenSearch',
+      icon: Opensearch,
+      url: 'https://opensearch.org/'
     },
     {
       name: 'Adobe Commerce',
