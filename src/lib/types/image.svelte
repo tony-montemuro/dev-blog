@@ -1,5 +1,6 @@
 <script lang="ts" context="module">
   import Admin from '$lib/assets/smbelite-admin.png';
+  import Api from '$lib/assets/http-api.png';
   import Create from '$lib/assets/elenchus-create.png';
   import Dark from '$lib/assets/image2ascii-dark.png';
   import Edit from '$lib/assets/elenchus-edit.png';
@@ -7,9 +8,11 @@
   import Games from '$lib/assets/smbelite-games.png';
   import Levelboard from '$lib/assets/smbelite-levelboard.png';
   import Quiz from '$lib/assets/elenchus-quiz.png';
+  import Server from '$lib/assets/http-server.png';
   import Totalizer from '$lib/assets/smbelite-totalizer.png';
   import Twitch from '$lib/assets/image2ascii-twitch.png';
   import Users from '$lib/assets/smbelite-users.png';
+  import Validate from '$lib/assets/http-validate.png';
 
   export interface Image {
     src: any;
@@ -78,6 +81,24 @@
       src: Dark,
       alt: 'image2ascii dark mode',
       caption: 'Dark mode'
+    }
+  ];
+
+  export const httpImages: Image[] = [
+    {
+      src: Server,
+      alt: 'Screenshot of server options',
+      caption: 'All configurable server options'
+    },
+    {
+      src: Validate,
+      alt: 'Screenshot of sample validation method',
+      caption: 'Example of validation function'
+    },
+    {
+      src: Api,
+      alt: 'Screenshot of sample response API',
+      caption: 'Example response API method'
     }
   ];
 </script>

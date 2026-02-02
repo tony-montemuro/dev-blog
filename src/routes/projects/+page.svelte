@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Http from '$lib/components/http.svelte';
   import Image2Ascii from '$lib/components/image2ascii.svelte';
   import ProjectDirectory from '$lib/components/project-directory.svelte';
   import ScrollButton from '$lib/components/scroll-button.svelte';
@@ -44,4 +45,5 @@
   <SmbElite />
   <Elenchus />
   <Image2Ascii />
+  <Http />
 </div>

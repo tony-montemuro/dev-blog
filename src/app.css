@@ -7,6 +7,7 @@
 	--font-text: "Hedvig Letters Serif", serif;
 	--animate-floatin: floatin 0.5s;
 	--animate-fadein: fadein 0.5s;
+	--color-http-bg: rgb(0, 142, 199);
 	--color-smb-elite-bg: rgb(58, 19, 68);
 	--color-smb-elite-fg: rgb(226, 187, 236);
 	--h-app: calc(100vh - var(--navbar-height));
